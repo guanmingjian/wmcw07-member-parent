@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 引入head -->
+<head th:insert="~{includePerson :: head}"></head>
+<body>
+
+<!-- 引入header -->
+<header class="ydc-header" th:insert="~{includePerson :: header}"></header>
+
+<!-- 主体 -->
+<section>
+    <div class="ydc-content-slide ydc-body">
+        <div class="ydc-flex">
+
+            <!-- 引入left -->
+            <div th:insert="~{includePerson :: left}" class="ydc-column ydc-column-2"></div>
+
+            <!-- 右侧区域 -->
+            <div class="ydc-column ydc-column-8">
+                <div class="ydc-release-content">
+                    <div class="ydc-tabPanel ydc-tabPanel-release">
+                        <div class="ydc-release-tab-head">
+                            <ul>
+                                <li class="hit">帐号设置</li>
+                            </ul>
+                        </div>
+                        <div class="ydc-panes">
+                            <form action="">
+                                <div class="ydc-reg-form-class ydc-reg-form-reg" style="margin-top:40px;">
+
+                                    <div class="ydc-reg-form-group clearfix">
+                                        <label>帐号昵称:</label>
+                                        <div class="ydc-reg-form-input">
+                                            <input type="text" id="loginEmail" name="name" class="ydc-form-control" autocomplete="off" th:placeholder="${session.user.name}" style="width:200px;">
+                                            <div class="ydc-reg-form-text">
+                                                <p>请输入2至14字的帐号名称</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ydc-reg-form-group clearfix">
+                                        <label>帐号简介:</label>
+                                        <div class="ydc-reg-form-input">
+                                            <input type="password" id="psd" name="briefInfo" class="ydc-form-control" autocomplete="off" placeholder="兴趣爱好..">
+                                            <div class="ydc-reg-form-text">
+                                                <p>请输入2至14字的帐号简介</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ydc-reg-form-group clearfix">
+                                        <label>帐号头像:</label>
+                                        <div class="ydc-reg-form-input">
+                                            <input type="file" id="" name="headImage" class="" autocomplete="off" placeholder="">
+                                            <div class="ydc-reg-form-text">
+                                                <p>选取至少160*160尺寸的图片</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ydc-reg-form-group clearfix">
+                                        <label>帐号描述:</label>
+                                        <div class="ydc-reg-form-input ydc-reg-form-input-width">
+                                            <textarea>留言让更多的伙伴认识和了解你哦！</textarea>
+                                            <div class="ydc-reg-form-text">
+                                                <p>请输入2至14字的帐号名称</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="ydc-reg-form-group clearfix">
+                                        <label>联系手机:</label>
+                                        <div class="ydc-reg-form-input">
+                                            <input type="text" id="user4" name="phoneNumber" class="ydc-form-control" autocomplete="off" th:placeholder="${session.user.phoneNumber}">
+                                        </div>
+                                    </div>
+
+                                    <div class="ydc-reg-form-group clearfix">
+                                        <label>邮箱:</label>
+                                        <div class="ydc-reg-form-input">
+                                            <input type="text" id="user5" name="email" class="ydc-form-control" autocomplete="off" th:placeholder="${session.user.email}">
+                                        </div>
+                                        <div class="ydc-reg-form-text">
+                                            <p>请使用自己日常使用邮箱便于接受相关信息</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="ydc-reg-form-group clearfix">
+                                        <label>QQ/微信号:</label>
+                                        <div class="ydc-reg-form-input">
+                                            <input type="text" id="user6" name="wechat" class="ydc-form-control" autocomplete="off" placeholder="li_3104">
+                                        </div>
+                                        <div class="ydc-reg-form-text">
+                                            <p>请输入常用QQ/微信号方便联系沟通</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="ydc-reg-form-group">
+                                    <div class="ydc-reg-form-button" style="margin-left:255px;">
+                                        <a class="btn fl" href="info.html">保存</a>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 右侧结束 -->
+        </div>
+    </div>
+
+    <!-- 引入foot -->
+    <div class="ydc-footer" th:include="~{includePerson :: foot}"></div>
+
+</section>
+
+</body>
+</html>

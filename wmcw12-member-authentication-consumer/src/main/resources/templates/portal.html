@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <base th:href="@{/}"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>首页-智联麻涌</title>
+    <link href="css/index/themify-icons.css" rel="stylesheet">
+    <link href="css/index/flaticon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index/index.css">
+    <link href="css/index/owl.carousel.css" rel="stylesheet">
+    <link href="css/index/owl.theme.css" rel="stylesheet">
+    <link href="css/index/swiper.min.css" rel="stylesheet">
+    <link href="css/index/style.css" rel="stylesheet">
+</head>
+<style type="text/css">
+    .portfolio-section .portfolio-grids .grid .details{
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+    .panel-body>p {
+        float: left;
+        margin-left: 20px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3; /* 自定义的行数 */
+        overflow: hidden;
+    }
+</style>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <!-- 引入preloader -->
+        <div class="preloader" th:insert="~{includePortal :: preloader}"></div>
+
+        <!-- 引入header -->
+        <header id="header" class="site-header header-style-1" th:insert="~{includePortal :: header}"></header>
+
+        <!-- 轮播图模块 -->
+        <section class="hero-slider hero-style-1">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+
+                    <!-- 轮播图1 -->
+                    <div class="swiper-slide">
+                        <div class="slide-inner slide-bg-image" data-background="images/index/index/slider/index_ta.jpg">
+                            <div class="container">
+                                <div data-swiper-parallax="300" class="slide-title">
+                                    <h2>东莞华阳湖湿地公园</h2>
+                                </div>
+                                <div data-swiper-parallax="400" class="slide-text">
+                                    <p>华阳湖湿地公园位于东莞市西北部的麻涌镇华阳村。以“游龙披锦、云舞泽涌”为设计理念，整个湿地公园集融休闲旅游、农耕体验、科普文化、城市生态功能于一体，具有浓郁的岭南水乡特色。</p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 轮播图2 -->
+                    <div class="swiper-slide">
+                        <div class="slide-inner slide-bg-image" data-background="images/index/index/slider/chuangke.jpg">
+                            <div class="container">
+                                <div data-swiper-parallax="300" class="slide-title">
+                                    <h2>东莞麻涌 · 创客坊</h2>
+                                </div>
+                                <div data-swiper-parallax="400" class="slide-text">
+                                    <p>东莞麻涌·创客坊，落址华阳湖国家湿地公园，毗邻祈福圣地拈花寺。百亿旅游项目升级不断，华阳湖巨型灯光秀、108米高水上音乐喷泉，引领消费新动力，引爆投资新商机！</p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 轮播图3 -->
+                    <div class="swiper-slide">
+                        <div class="slide-inner slide-bg-image" data-background="images/index/index/slider/xinhua.jpg">
+                            <div class="container">
+                                <div data-swiper-parallax="300" class="slide-title">
+                                    <h2>大学</h2>
+                                </div>
+                                <div data-swiper-parallax="400" class="slide-text">
+                                    <p>大学是一所综合性全日制普通高等院校，是中国医学数字教育项目示范基地学校。</p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="feature-grids clearfix">
+                            <div class="grid">
+                                <div class="header">
+                                    <img src="images/index/index/logo/maplogo.png" style="width: 4.375rem; height: 4.375rem">
+                                </div>
+                                <div class="details">
+                                    <h3>智能导览</h3>
+                                    <p>听说过美丽麻涌，还没来过麻涌，智联麻涌带你全景式浏览美丽麻涌，让你感受身临其境，极富盛名的华阳湖，也尽在眼前...</p>
+                                    <a href="https://720yun.com/t/6fbj5ptmuw7?scene_id=22126438" target="_blank" class="read-more">点击查看</a>
+                                </div>
+                            </div>
+                            <div class="grid">
+                                <div class="header">
+                                    <img src="images/index/index/logo/hotellogo.png" style="width: 4.375rem;height: 4.375rem;">
+                                </div>
+                                <div class="details">
+                                    <h3>精选酒店</h3>
+                                    <p>每日自动更新互联网上的酒店，智能为你推荐最优质的酒店，结合大众喜爱度和昨日热度，为你选择性价比最高的酒店...</p>
+                                    <a href="hotel.html" target="_blank" class="read-more">点击查看</a>
+                                </div>
+                            </div>
+                            <div class="grid">
+                                <div class="header">
+                                    <img src="images/index/index/logo/foodlogo.png" style="width: 4.375rem;height: 4.375rem;">
+                                </div>
+                                <div class="details">
+                                    <h3>周边美食</h3>
+                                    <p>还在烦恼不知道吃什么？来智联麻涌看看吧！网红美食，最好吃的美食，最正宗的地道美食，都在这里能找到！好不好吃，由吃货决定...</p>
+                                    <a href="cate.html" target="_blank" class="read-more">点击查看</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section section-padding">
+            <div class="container">
+                <div class="row">
+                    <div style="float: right">
+                        <iframe scrolling="no" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=36&icon=5&num=5"></iframe>
+                    </div>
+                    <div class="row" style="clear: both">
+                        <div class="col col-md-5">
+                            <div class="img-holder">
+                                <img src="images/index\index\map\map.jpg">
+
+                            </div>
+                        </div>
+                        <div class="col col-md-7">
+                            <div class="details">
+                                <div class="section-title">
+                                    <h2>智能地图</h2>
+                                </div>
+                                <p>智能地图带你轻松游览美丽麻涌，一键式查询周边设施，智能为你查询离你最近的设施，为你选择最优的路线，精准导航轻松出发...</p>
+                                <div class="contact-info">
+                                    <div>
+                                        <img src="images/index\index\map\mc.png" width="60px">
+                                        <h4>麻涌公共</h4>
+                                        <p>一键式搜寻麻涌周边，智能为你选择路线，精准式导航</p>
+                                    </div>
+                                    <div>
+                                        <img src="images/index\index\map\quanguo.png" width="60px">
+                                        <h4>全国公共</h4>
+                                        <p>一键式搜寻周边银行、医院、酒店和餐厅等</p>
+                                    </div>
+                                </div>
+                                <div class="btns">
+                                    <a href="mapMc.html" target="_blank" class="theme-btn-s2">麻涌公共</a>
+                                    <a href="mapChina.html" target="_blank" class="theme-btn-s3">全国公共</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="portfolio-section section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-lg-6 col-lg-offset-3">
+                        <div class="section-title-s3">
+                            <h2>精选酒店</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="portfolio-grids portfolio-slider-s2">
+                            <div class="grid">
+                                <div class="img-holder" style="padding: 15px 20px;">
+                                    <img src="images/index/index/hotel/hotel1.jpg" href="https://hotel.meituan.com/123967930/">
+                                </div>
+                                <div class="details">
+                                    <div class="inner">
+                                        <h1 align="center"><a href="https://hotel.meituan.com/123967930/" style="color: white;" target="_black">西园</a></h1>
+                                        <!-- <p class="cat">西园</p> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid">
+                                <div class="img-holder" style="padding: 15px 20px;">
+                                    <img src="images/index/index/hotel/hotel2.jpg" href="https://hotel.meituan.com/178915575/">
+                                </div>
+                                <div class="details">
+                                    <div class="inner">
+                                        <h1 align="center"><a href="https://hotel.meituan.com/178915575/" style="color: white;" target="_black">金穗湾</a></h1>
+                                        <!-- <p class="cat">金穗湾</p> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid">
+                                <div class="img-holder" style="padding: 15px 20px;">
+                                    <img src="images/index/index/hotel/hotel3.jpg" href="https://hotel.meituan.com/164590597/">
+                                </div>
+                                <div class="details">
+                                    <div class="inner">
+                                        <h1 align="center"><a href="https://hotel.meituan.com/164590597/" style="color: white;" target="_black">白房子</a></h1>
+                                        <!-- <p class="cat">白房子</p> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="all-portfolio">
+                            <h4><a href="hotel.html" target="_blank" class="theme-btn-s2">更多酒店...</a></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services-section-s2 section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-md-4">
+                        <div class="section-title-s2">
+                            <h2>周边美食</h2>
+                        </div>
+                    </div>
+                    <div class="col col-md-7 col-md-offset-1">
+                        <div class="section-title-text">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="service-grids services-slider clearfix">
+                            <img src="images/index/index/food/img3_4.jpg" >
+                            <img src="images/index/index/food/img3_6.jpg" >
+                            <img src="images/index/index/food/img3_7.jpg" >
+                            <img src="images/index/index/food/img3_8.jpg" >
+                            <img src="images/index/index/food/img3_9.jpg" >
+                            <img src="images/index/index/food/img3_10.jpg" >
+
+                        </div>
+                    </div>
+                </div>
+                <div class="all-portfolio">
+                    <h4 align="center"><a href="cate.html" target="_blank" class="theme-btn-s2">更多美食...</a></h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- 文章 -->
+        <section class="faq-achievement-section section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-md-12">
+                        <div class="section-title-s2">
+                            <h2>新闻资讯</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <!-- 左侧三篇文章 -->
+                    <div class="col col-md-6">
+                        <div class="faq-container">
+                            <div class="panel-group faq-accordion theme-accordion-s1" id="accordion">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右侧三篇文章 -->
+                    <div class="col col-md-6">
+                        <div class="panel-group faq-accordion theme-accordion-s1" id="accordion2">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end 文章 -->
+
+        <!-- 美丽华阳湖 -->
+        <section class="services-section section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-md-4">
+                        <div class="section-title-s2">
+                            <h2>美丽华阳湖</h2>
+                        </div>
+                    </div>
+                    <div class="col col-md-7 col-md-offset-1">
+                        <div class="section-title-text">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="service-grids clearfix">
+                            <div class="grid">
+                                <img src="images/index/index/news/yingdi.jpg" height="180px">
+                                <h3><a>华阳湖BBQ</a></h3>
+                                <p>华阳湖营地拥有巨大的天然大草坪，可提供企业团建、公司年华、团队拓展等大型活动...</p>
+                            </div>
+                            <div class="grid">
+                                <img src="images/index/index/news/che.jpg" height="180px">
+                                <h3><a>华阳湖房车营地</a></h3>
+                                <p>位于美丽的麻涌华阳湖畔，住在这里足不出莞，却能感受到世外桃源般的野趣情调！</p>
+                            </div>
+                            <div class="grid">
+                                <img src="images/index/index/news/park.jpg" height="180px">
+                                <h3><a>华阳湖湿地公园</a></h3>
+                                <p>整个湿地公园集融休闲旅游、农耕体验、科普文化、城市生态功能于一体，具有浓郁的岭南水乡特色。</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog-section section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                        <div class="section-title-s3">
+                            <h2>公共服务</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="blog-grids clearfix">
+                            <div class="grid">
+
+                                <img src="images/index/index/public/government.png" width="50px">
+                                <div class="entry-details">
+                                    <h3><a href="#">政务服务中心</a></h3>
+                                    <p>麻涌镇政务服务中心快速通道</p>
+                                </div>
+                                <div class="overlay">
+                                    <div class="middle">
+                                        <a href="http://www.gdzwfw.gov.cn/portal/country-hall.do?region=441900126000" class="theme-btn" target="_blank">点击进入</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid">
+                                <img src="images/index/index/public/test.png" width="50px">
+                                <div class="entry-details">
+                                    <h3><a href="#">服务电话大全</a></h3>
+                                    <p>东莞公共服务电话目录</p>
+                                </div>
+                                <div class="overlay">
+                                    <div class="middle">
+                                        <a href="http://app.dg.gov.cn/u/zwfw/index" class="theme-btn" target="_blank">点击进入</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid">
+                                <img src="images/index/index/public/school.png" width="50px">
+                                <div class="entry-details">
+                                    <h3><a href="#">大学官网</a></h3>
+                                    <p>大学官网快速通道</p>
+                                </div>
+                                <div class="overlay">
+                                    <div class="middle">
+                                        <a href="https://www.xhsysu.edu.cn/" target="_blank" class="theme-btn">点击进入</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 引入footer -->
+        <footer class="site-footer" th:insert="~{includePortal :: foot}"></footer>
+
+    </div>
+
+<script src="js/index/index.js"></script>
+<script src="js/index/bootstrap.min.js"></script>
+<script src="js/index/jquery-plugin-collection.js"></script>
+<script src="js/index/script.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+
+<script>
+    $(function () {
+        $.ajax({
+            "url": "/user/visit/index",
+            "type":"post",
+            "async":false,
+            "dataType":"json",
+            "contentType":"application/json;charset=UTF-8"  //传出Json传值必需
+        });
+        var ajaxResult = $.ajax({
+            "url": "portal/get/news/article.json",
+            "type":"post",
+            "async":false,
+            "dataType":"json"
+        });
+
+        var list = ajaxResult.responseJSON.data;
+
+        for(var i = 0; i < 3; i++) {
+
+            var object = list[i];
+
+            var id = object.id;
+            var title = object.title;
+            var textContent = object.textContent;
+
+            if(i==0){
+                var divElement = "<div class=\"panel panel-default\">\n" +
+                    "            <div class=\"panel-heading\">\n" +
+                    "                <a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse-"+(i+1)+"\" aria-expanded=\"true\">"+title+"</a>\n" +
+                    "            </div>\n" +
+                    "            <div id=\"collapse-"+(i+1)+"\" class=\"panel-collapse collapse in\">\n" +
+                    "                <div class=\"panel-body\">\n" +
+                    "                    <p>"+textContent+"</p><a href=\"article.html?articleId="+id+"\" style=\"margin-left:20px\" target=\"_blank\">查看更多</a>\n" +
+                    "                </div>\n" +
+                    "            </div>\n" +
+                    "        </div>";
+
+                $("#accordion").append(divElement);
+            }
+            if(i>0){
+                var divElement = "<div class=\"panel panel-default\">\n" +
+                    "            <div class=\"panel-heading\">\n" +
+                    "                <a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse-"+(i+1)+"\" aria-expanded=\"true\">"+title+"</a>\n" +
+                    "            </div>\n" +
+                    "            <div id=\"collapse-"+(i+1)+"\" class=\"panel-collapse collapse\">\n" +
+                    "                <div class=\"panel-body\">\n" +
+                    "                    <p>"+textContent+"</p><a href=\"article.html?articleId="+id+"\" style=\"margin-left:20px\" target=\"_blank\">查看更多</a>\n" +
+                    "                </div>\n" +
+                    "            </div>\n" +
+                    "        </div>";
+
+                $("#accordion").append(divElement);
+            }
+        }
+
+        for(var i = 3; i < 5; i++) {
+
+            var object = list[i];
+
+            var id = object.id;
+            var title = object.title;
+            var textContent = object.textContent;
+
+            if(i==3){
+                var divElement = "<div class=\"panel panel-default\">\n" +
+                    "            <div class=\"panel-heading\">\n" +
+                    "                <a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse-"+(i+1)+"\" aria-expanded=\"true\">"+title+"</a>\n" +
+                    "            </div>\n" +
+                    "            <div id=\"collapse-"+(i+1)+"\" class=\"panel-collapse collapse in\">\n" +
+                    "                <div class=\"panel-body\">\n" +
+                    "                    <p>"+textContent+"</p><a href=\"portal/seekArticle/"+id+"\" style=\"margin-left:20px\" target=\"_blank\">查看更多</a>\n" +
+                    "                </div>\n" +
+                    "            </div>\n" +
+                    "        </div>";
+
+                $("#accordion2").append(divElement);
+            }
+            if(i>3){
+                var divElement = "<div class=\"panel panel-default\">\n" +
+                    "            <div class=\"panel-heading\">\n" +
+                    "                <a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse-"+(i+1)+"\" aria-expanded=\"true\">"+title+"</a>\n" +
+                    "            </div>\n" +
+                    "            <div id=\"collapse-"+(i+1)+"\" class=\"panel-collapse collapse\">\n" +
+                    "                <div class=\"panel-body\">\n" +
+                    "                    <p>"+textContent+"</p><a href=\"portal/seekArticle/"+id+"\" style=\"margin-left:20px\" target=\"_blank\">查看更多</a>\n" +
+                    "                </div>\n" +
+                    "            </div>\n" +
+                    "        </div>";
+
+                $("#accordion2").append(divElement);
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base th:href="@{/}"/>
+    <title>本地美食-智联麻涌</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Great Taste Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+				Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+    function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+    <link href="css/cate/bootstrap.css" rel="stylesheet" type="text/css" media="all" />、
+    <link href="css/cate/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet"href="css/cate/pagination.css">
+
+    <script src="js/cate/jquery-1.11.1.min.js"></script>
+    <style>
+        .page div{
+            text-align:center;
+        }
+        #PageBody h3 a {
+            font-size: 18px;
+            min-height: 57px;
+        }
+        .shopInfo{
+            min-height: 150px;
+        }
+        .shopInfo p{
+            color: #474747;
+        }
+
+    </style>
+</head>
+<body>
+<div class="banner-body">
+    <div class="container">
+        <div class="banner-body-content">
+            <div class="col-xs-3 banner-body-left">
+                <div class="logo">
+                    <h1><a href="index">Wisdom <span>MC</span></a></h1>
+                </div>
+                <div class="top-nav">
+                    <nav class="navbar navbar-default">
+                        <!-- 小屏幕按钮 -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                        <!-- 子导航 -->
+                        <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                            <nav class="stroke">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="" class="hvr-underline-from-left"><i class=""></i>回到首页</a></li>
+                                    <li class="active"><a href="cate.html" class="hvr-underline-from-left"><i class=""></i>智能推荐</a></li>
+                                    <li><a href="cate.html" class="hvr-underline-from-left"><i class=""></i>限时优惠</a></li>
+                                    <li><a href="photo.html" class="hvr-underline-from-left"><i class=""></i>精选美图</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- 子导航结束 -->
+                    </nav>
+                </div>
+            </div>
+            <div class="col-xs-9 banner-body-right">
+                <div class="wmuSlider example1">
+                    <div class="wmuSliderWrapper">
+                        <article style="position: absolute; width: 100%; opacity: 0;">
+                            <div class="banner-wrap">
+                                <div class="banner">
+                                </div>
+                            </div>
+                        </article>
+                        <article style="position: absolute; width: 100%; opacity: 0;">
+                            <div class="banner-wrap">
+                                <div class="banner1">
+                                </div>
+                            </div>
+                        </article>
+                        <article style="position: absolute; width: 100%; opacity: 0;">
+                            <div class="banner-wrap">
+                                <div class="banner2">
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <script src="js/cate/jquery.wmuSlider.js"></script>
+                <script>
+                    $('.example1').wmuSlider();
+                </script>
+                <div class="banner-bottom">
+                    <div class="col-md-4 banner-left">
+                        <div class="col-xs-3 banner-left1">
+                            <div class="banner-left11">
+                                <span> </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-9 banner-right1">
+                            <h3>新鲜卫生</h3>
+                        </div>
+                        <div class="clearfix"> </div>
+                        <p>享受高品质生活尽在智联麻涌，满足你味蕾上的挑剔。</p>
+                    </div>
+                    <div class="col-md-4 banner-left">
+                        <div class="col-xs-3 banner-left1">
+                            <div class="banner-left22">
+                                <span> </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-9 banner-right1">
+                            <h3>服务周到</h3>
+                        </div>
+                        <div class="clearfix"> </div>
+                        <p>享受高品质生活尽在智联麻涌，满足你味蕾上的挑剔。</p>
+                    </div>
+                    <div class="col-md-4 banner-left">
+                        <div class="col-xs-3 banner-left1">
+                            <div class="banner-left33">
+                                <span> </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-9 banner-right1">
+                            <h3>种类齐全</h3>
+                        </div>
+                        <div class="clearfix"> </div>
+                        <p>享受高品质生活尽在智联麻涌，满足你味蕾上的挑剔。</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+            <br>
+            <br>
+            <div class="col-xs-3 banner-body-left">
+                <div class="latest-news">
+                    <h2>美食分类</h2>
+                    <form action="cate" method="post">
+                        <input type="hidden" name="oper" value="showAllCate"/>
+                        <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+
+                            <div class="panel panel-default" onclick="javascript:setType('cateClas',1)">
+                                <div class="panel-heading" role="tab" id="heading1">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion1" href="javascript:void(0)" aria-expanded="true" aria-controls="collapseOne">
+                                            中餐
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default" onclick="javascript:setType('cateClas',2)">
+                                <div class="panel-heading" role="tab" id="heading2">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="javascript:void(0)" aria-expanded="false" aria-controls="collapseTwo">
+                                            西餐
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default" onclick="javascript:setType('cateClas',3)">
+                                <div class="panel-heading" role="tab" id="heading3">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="javascript:void(0)" aria-expanded="false" aria-controls="collapseThree">
+                                            小吃
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default" onclick="javascript:setType('cateClas',4)">
+                                <div class="panel-heading" role="tab" id="heading4">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="javascript:void(0)" aria-expanded="false" aria-controls="collapseThree">
+                                            甜品
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <h2>位置分类</h2>
+                        <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+
+                            <div class="panel panel-default" onclick="javascript:setType('address','创客')">
+                                <div class="panel-heading" role="tab" id="heading5">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion2" href="javascript:void(0)" aria-expanded="true" aria-controls="collapseOne">
+                                            创客坊
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default"  onclick="javascript:setType('address','古梅')">
+                                <div class="panel-heading" role="tab" id="heading6">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="javascript:void(0)" aria-expanded="false" aria-controls="collapseTwo">
+                                            古梅路美食
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default"  onclick="javascript:setType('address','渔人')">
+                                <div class="panel-heading" role="tab" id="heading7">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="javascript:void(0)" aria-expanded="false" aria-controls="collapseThree">
+                                            渔人码头
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default"  onclick="javascript:setType('address','中大')">
+                                <div class="panel-heading" role="tab" id="heading8">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="javascript:void(0)" aria-expanded="false" aria-controls="collapseThree">
+                                            中大新华
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default"  onclick="javascript:setType('address','星河')">
+                                <div class="panel-heading" role="tab" id="heading9">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="javascript:void(0)" aria-expanded="false" aria-controls="collapseThree">
+                                            星河城市广场
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- 右边区域-->
+            <div class="col-xs-9 banner-body-right" id="PageBody">
+
+            </div>
+
+            <div class="clearfix"> </div>
+
+            <!-- 分页模块 -->
+            <div class="page" align="center">
+                <div id="Pagination" class="pagination">
+
+                </div>
+            </div>
+
+        </div>
+        <br>
+    </div>
+</div>
+</div>
+<script src="js/cate/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.pagination.js"></script>
+<script>
+    $(function () {
+
+        window.pageNum=1;
+        window.pageSize = 6;
+        window.keyword = "";
+        window.type = "";
+        window.data = "";
+
+        // 调用执行分页的函数，显示分页效果
+        generatePage();
+        $.ajax({
+            "url": "/user/visit/cate",
+            "type":"post",
+            "async":false,
+            "dataType":"json",
+            "contentType":"application/json;charset=UTF-8"  //传出Json传值必需
+        });
+    });
+
+    function setType(type,data) {
+
+        window.type=type;
+        window.data=data;
+
+        generatePage();
+
+        return false;
+    }
+
+    // 执行分页，生成页面效果，任何时候调用这个函数都会重新加载页面
+    function generatePage() {
+
+        // 1.获取分页数据
+        var pageInfo = getPageInfoRemote();
+
+        // 2.填充酒店
+        fillHotelBody(pageInfo);
+    }
+
+    // 远程访问服务器端程序获取pageInfo数据
+    function getPageInfoRemote() {
+
+        if(window.type==''){
+
+            var object = {
+                "pageNum": window.pageNum,
+                "pageSize": window.pageSize,
+                "keyword": window.keyword
+            };
+
+        }
+
+        if(window.type=='cateClas'){
+
+            var object = {
+                "pageNum": window.pageNum,
+                "pageSize": window.pageSize,
+                "keyword": window.keyword,
+                "cateClas": window.data
+            };
+
+        }
+
+        if(window.type=='address'){
+
+            var object = {
+                "pageNum": window.pageNum,
+                "pageSize": window.pageSize,
+                "keyword": window.keyword,
+                "address": window.data
+            };
+
+        }
+
+        console.log(JSON.stringify(object));
+
+        // 调用$.ajax()函数发送请求并接受$.ajax()函数的返回值
+        var ajaxResult = $.ajax({
+            "url": "portal/get/cate.json",
+            "type":"post",
+            "data": JSON.stringify(object),        //Json传值必需,且只能由一个data
+            "async":false,
+            "dataType":"json",      //返回Json传值必需
+            "contentType":"application/json;charset=UTF-8"  //传出Json传值必需
+        });
+
+        console.log(ajaxResult);
+
+        // 判断当前响应状态码是否为200
+        var statusCode = ajaxResult.status;
+
+        // 如果当前响应状态码不是200，说明发生了错误或其他意外情况，显示提示消息，让当前函数停止执行
+        if(statusCode != 200) {
+            alert("失败！响应状态码="+statusCode+" 说明信息="+ajaxResult.statusText);
+            return null;
+        }
+
+        // 如果响应状态码是200，说明请求处理成功，获取pageInfo
+        var resultEntity = ajaxResult.responseJSON;
+
+        // 从resultEntity中获取result属性
+        var result = resultEntity.result;
+
+        // 判断result是否成功
+        if(result == "FAILED") {
+            alert(resultEntity.message);
+            return null;
+        }
+
+        // 确认result为成功后获取pageInfo
+        var pageInfo = resultEntity.data;
+
+        // 返回pageInfo
+        return pageInfo;
+    }
+
+    // 填充表格
+    function fillHotelBody(pageInfo) {
+
+        // 清除tbody中的旧的内容
+        $("#PageBody").empty();
+
+        // 这里清空是为了让没有搜索结果时不显示页码导航条
+        $("#Pagination").empty();
+
+        // 判断pageInfo对象是否有效
+        if(pageInfo == null || pageInfo == undefined || pageInfo.list == null || pageInfo.list.length == 0) {
+
+            $("#PageBody").append("<div align=\"center\"><p>抱歉，没有找到该信息！</p></div>");
+
+            return ;
+        }
+
+        // 使用pageInfo的list属性填充tbody
+        for(var i = 0; i < pageInfo.list.length; i++) {
+
+            var object = pageInfo.list[i];
+
+            //var id = object.id;
+            var title = object.title;
+            var img = object.img;
+            var address = object.address;
+            var shop = object.shop;
+            var cateHref = object.href;
+
+            var cateDiv = '<div class="msg-text-bottom">\n'+
+                '<div class="col-md-4 msg-text-bottom-left">\n'+
+                '<figure class="effect-winston">\n'+
+                '<a href="'+cateHref+'"target="_blank"><img src="'+img+'" class="img-responsive" />\n'+
+                '<figcaption>\n'+
+                '\n'+
+                '</figcaption>\n'+
+                '</a>\n'+
+                '</figure>\n'+
+                '\n'+
+                '<h3><a href="'+cateHref+'"target="_blank">'+title+'</a></h3>\n'+
+                '<div class="shopInfo"><p>'+'<span class="label label-default"><strong>地址: </strong></span>&nbsp;&nbsp;'+address+'</p>\n'+
+                '<p>'+'<span class="label label-warning"><strong>推荐菜: </strong></span>&nbsp;&nbsp;'+shop+'</p>\n</div>'+
+                '</div>\n'+
+                '</div>';
+
+            $("#PageBody").append(cateDiv);
+
+        }
+
+        // 生成分页导航条
+        generateNavigator(pageInfo);
+    }
+
+    // 生成分页页码导航条
+    function generateNavigator(pageInfo) {
+
+        // 获取总记录数
+        var totalRecord = pageInfo.total;
+
+        // 声明相关属性
+        var properties = {
+            "num_edge_entries": 2,
+            "num_display_entries": 3,
+            "callback": paginationCallBack,
+            "items_per_page": pageInfo.pageSize,
+            "current_page": pageInfo.pageNum - 1,
+            "prev_text": "上一页",
+            "next_text": "下一页"
+        }
+
+        // 调用pagination()函数
+        $("#Pagination").pagination(totalRecord, properties);
+    }
+
+    // 翻页时的回调函数
+    function paginationCallBack(pageIndex, jQuery) {
+
+        // 修改window对象的pageNum属性
+        window.pageNum = pageIndex + 1;
+
+        // 调用分页函数
+        generatePage();
+
+        //window.scrollTo(450,400);
+
+        // 取消页码超链接的默认行为
+        return false;
+    }
+</script>
+
+
+</body>
+</html>

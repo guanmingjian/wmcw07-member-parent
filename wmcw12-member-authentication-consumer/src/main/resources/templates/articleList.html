@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base th:href="@{/}"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="irstheme">
+    <title>文章列表-智联麻涌</title>
+    <link href="css/index/themify-icons.css" rel="stylesheet">
+    <link href="css/index/flaticon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index/index.css">
+    <link href="css/index/owl.carousel.css" rel="stylesheet">
+    <link href="css/index/owl.theme.css" rel="stylesheet">
+    <link href="css/index/swiper.min.css" rel="stylesheet">
+    <link href="css/index/style.css" rel="stylesheet">
+    <link href="fonts/alibaba/iconfont.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet"href="css/article/pagination.css">
+    <style>
+        .header-style-1 {
+            background-color: #102541;
+        }
+        p {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3; /* 自定义的行数 */
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+
+        <!-- 引入preloader -->
+        <div class="preloader" th:insert="~{includePortal :: preloader}"></div>
+
+        <!-- 引入header -->
+        <header id="header" class="site-header header-style-1" th:insert="~{includePortal :: header}"></header>
+
+        <br>
+
+        <!-- 主体内容 -->
+        <section class="blog-pg-section blog-pg-left-sidebar section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-md-8 col-md-push-4">
+
+                        <div class="blog-content">
+                            <!-- 文章列表 -->
+                            <div class="post format-standard-image" id="articleListBody">
+
+                            </div>
+                            <!-- 分页模块 -->
+                            <div class="pagination-wrapper pagination-wrapper-left" id="Pagination">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- 左侧区域主体 -->
+                    <div class="col col-md-4 col-md-pull-8">
+                        <div class="blog-sidebar">
+
+                            <!-- 搜索框 -->
+                            <div class="widget search-widget">
+                                <h3>快速搜索</h3>
+                                <form  method="post">
+                                    <div>
+                                        <input type="text" id="keywordInput" class="form-control" name="title" placeholder="请输入文章标题...">
+                                        <button id="searchBtn"><i class="iconfont icon-icon-test4"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- 智能导读模块 -->
+                            <div class="widget recent-post-widget">
+                                <h3>智能导读</h3>
+                                <div class="posts" id="smartRecommendation">
+
+                                </div>
+                            </div>
+
+                            <!-- 排行榜模块 -->
+                            <div class="widget recent-post-widget">
+                                <h3>热度排行榜</h3>
+                                <div class="posts" id="rankList">
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 引入footer -->
+        <footer class="site-footer" th:insert="~{includePortal :: foot}"></footer>
+
+    </div>>
+
+<script src="js/index/index.js"></script>
+<script src="js/index/bootstrap.min.js"></script>
+<script src="js/index/jquery-plugin-collection.js"></script>
+<script src="js/index/script.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.pagination.js"></script>
+<script src="js/jquery.cookie.js"></script>
+
+<script th:inline="javascript">
+    $(function () {
+
+        window.pageNum=1;
+        window.pageSize = 4;
+
+        // 获取从article.html过来的session作用域的keyword
+        var hrefKeyword =window.sessionStorage.getItem('hrefKeyword');
+
+        // 获取从article.html过来的session作用域的type
+        var hrefType =window.sessionStorage.getItem('hrefType');
+
+        if(hrefKeyword!=null){
+            // 设置window.keyword
+            window.keyword = hrefKeyword;
+            // 清除hrefKeyword
+            window.sessionStorage.removeItem('hrefKeyword');
+            // 配置搜索全站文章
+            window.searchWay = 'global';
+        }else {
+            // 初始化keyword
+            window.keyword = "";
+            // thymeleaf获得request作用域中该文章的类型
+            window.type = [[${type}]];
+            // 配置搜索分类文章
+            window.searchWay = 'type';
+        }
+
+        generatePage(window.searchWay);
+        generateSmartRecommendation();
+        generateRanklist();
+    });
+
+    // 2.给查询按钮绑定单击响应函数
+    $("#searchBtn").click(function(){
+
+        // ①获取关键词数据赋值给对应的全局变量
+        window.keyword = $("#keywordInput").val();
+        // 配置搜索全站文章
+        window.searchWay = 'global';
+        // ②调用分页函数刷新页面
+        generatePage(window.searchWay);
+
+        return false;
+    });
+    // 执行分页，生成页面效果，任何时候调用这个函数都会重新加载页面
+    function generatePage(searchWay) {
+
+        // 1.获取分页数据
+        var pageInfo = getPageInfoRemote(searchWay);
+
+        // 2.填充酒店
+        fillArticleListBody(pageInfo);
+
+    }
+    // 远程访问服务器端程序获取pageInfo数据
+    function getPageInfoRemote(searchWay) {
+
+        if(searchWay == 'global'){
+
+            // 调用$.ajax()函数发送请求并接受$.ajax()函数的返回值
+            var ajaxResult = $.ajax({
+                "url": "article/get/all/page.json",
+                "type":"post",
+                "data": {
+                    "pageNum": window.pageNum,
+                    "pageSize": window.pageSize,
+                    "keyword": window.keyword
+                },
+                "async":false,
+                "dataType":"json"
+            });
+
+        }else {
+
+            // 调用$.ajax()函数发送请求并接受$.ajax()函数的返回值
+            var ajaxResult = $.ajax({
+                "url": "article/get/"+window.type+"/page.json",
+                "type":"post",
+                "data": {
+                    "pageNum": window.pageNum,
+                    "pageSize": window.pageSize,
+                    "keyword": window.keyword
+                },
+                "async":false,
+                "dataType":"json"
+            });
+        }
+
+        console.log(ajaxResult);
+
+        // 判断当前响应状态码是否为200
+        var statusCode = ajaxResult.status;
+
+        // 如果当前响应状态码不是200，说明发生了错误或其他意外情况，显示提示消息，让当前函数停止执行
+        if(statusCode != 200) {
+            alert("失败！响应状态码="+statusCode+" 说明信息="+ajaxResult.statusText);
+            return null;
+        }
+
+        // 如果响应状态码是200，说明请求处理成功，获取pageInfo
+        var resultEntity = ajaxResult.responseJSON;
+
+        // 从resultEntity中获取result属性
+        var result = resultEntity.result;
+
+        // 判断result是否成功
+        if(result == "FAILED") {
+            alert(resultEntity.message);
+            return null;
+        }
+
+        // 确认result为成功后获取pageInfo
+        var pageInfo = resultEntity.data;
+
+        // 返回pageInfo
+        return pageInfo;
+    }
+    // 填充右侧文章列表
+    function fillArticleListBody(pageInfo) {
+
+        // 清除articleListBody中的旧的内容
+        $("#articleListBody").empty();
+
+        // 这里清空是为了让没有搜索结果时不显示页码导航条
+        $("#Pagination").empty();
+
+        // 判断pageInfo对象是否有效
+        if(pageInfo == null || pageInfo == undefined || pageInfo.list == null || pageInfo.list.length == 0) {
+
+            $("#articleListBody").append("<div align=\"center\"><p>抱歉，没有找到该信息！</p></div>");
+
+            return ;
+        }
+
+        // 使用pageInfo的list属性填充articleList
+        for(var i = 0; i < pageInfo.list.length; i++) {
+
+            var object = pageInfo.list[i];
+
+            var id = object.id;
+            var title = object.title;
+            var imgPath = object.imgPath;
+            var authorName = object.authorName;
+            var publishTime = object.publishTime;
+            var comNum = object.comNum;
+            var readNum = object.readNum;
+            var likeNum = object.likeNum;
+            var textContent = object.textContent;
+
+            var articleListDiv="" +
+                "<div class=\"entry-media\">\n" +
+                "    <img src=\""+imgPath+"\" height=\"336px\" width=\"600px\">\n" +
+                "</div>\n" +
+                "<ul class=\"entry-meta\">\n" +
+                "    <li><a><i class=\"iconfont icon-icon-test5\"></i>"+authorName+"</a></li>\n" +
+                "    <li><a><i class=\"iconfont icon-icon-test3\"></i>"+publishTime+"</a></li>\n" +
+                "    <li><a><i class=\"iconfont icon-icon-test2\"></i>"+comNum+"</a></li>\n" +
+                "    <li><a><i class=\"iconfont icon-icon-test\"></i>"+readNum+"</a></li>\n" +
+                "    <li><a id=\"addLike"+i+"\" onclick=\"fun1("+id+","+i+")\"><i class=\"iconfont icon-icon-test16\"></i>"+likeNum+"</a></li>\n" +
+                "</ul>\n" +
+                "<h3><a href=\"article.html?articleId="+id+"\">"+title+"</a></h3>\n" +
+                "<p style=\"max-width: 600px;\">"+textContent+"</p>\n";
+
+            $("#articleListBody").append(articleListDiv);
+        }
+
+        // 生成分页导航条
+        generateNavigator(pageInfo);
+    }
+    // 生成分页页码导航条
+    function generateNavigator(pageInfo) {
+
+        // 获取总记录数
+        var totalRecord = pageInfo.total;
+
+        // 声明相关属性
+        var properties = {
+            "num_edge_entries": 2,
+            "num_display_entries": 3,
+            "callback": paginationCallBack,
+            "items_per_page": pageInfo.pageSize,
+            "current_page": pageInfo.pageNum - 1,
+            "prev_text": "<i class=\"fi flaticon-back\"></i>",
+            "next_text": "<i class=\"fi flaticon-next\"></i>"
+        }
+
+        // 调用pagination()函数
+        $("#Pagination").pagination(totalRecord, properties);
+    }
+    // 翻页时的回调函数
+    function paginationCallBack(pageIndex, jQuery) {
+
+        // 修改window对象的pageNum属性
+        window.pageNum = pageIndex + 1;
+
+        // 调用分页函数
+        generatePage(window.searchWay);
+
+        // 取消页码超链接的默认行为
+        return false;
+    }
+    //智能推荐
+    function generateSmartRecommendation() {
+
+        $.ajax({
+            "url": "article/get/smart/recommendation.json",
+            "type":"post",
+            "async":false,
+            "dataType":"json",
+            "success":function (response) {
+
+                for(var i = 0; i < response.data.length; i++){
+
+                    var object = response.data[i];
+
+                    var id = object.id;
+                    var title = object.title;
+                    var headImg = object.headImg;
+                    var authorName = object.authorName;
+                    var label = object.label;
+
+                    if(label=='你最常看'){
+                        var labelBg = " background-color: #FF7F50;\n" +
+                            "            border-radius: 3px;\n" +
+                            "            padding: 2px;\n" +
+                            "            color: white;";
+                    }else{
+                        var labelBg = " background-color: #32CD32;\n" +
+                            "            border-radius: 3px;\n" +
+                            "            padding: 2px;\n" +
+                            "            color: white;";
+                    }
+
+                    var SmartRecommendationDiv= "<div class=\"post\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<div class=\"img-holder\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<img src=\""+headImg+"\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<div class=\"details\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<h4><a href=\"article.html?articleId="+id+"\">"+title+"</a></h4>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<span class=\"date\"><i class=\"iconfont icon-icon-test5\"></i>"+authorName+"</span><br>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<span class=\"date\" style=\""+labelBg+"\">"+label+"</span>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t\t\t</div>";
+
+
+                    $("#smartRecommendation").append(SmartRecommendationDiv);
+                }
+            }
+        });
+
+    };
+    //排行榜
+    function generateRanklist() {
+        $.ajax({
+            "url": "article/get/ranking/list.json",
+            "type":"post",
+            "async":false,
+            "dataType":"json",
+            "success":function (response) {
+
+                for(var i = 0; i < response.data.length; i++) {
+
+                    var object = response.data[i];
+
+                    var id = object.id;
+                    var title = object.title;
+                    var headImg = object.headImg;
+                    var authorName = object.authorName;
+                    var firepower = object.firepower;
+
+                    var rankListDiv = "<div class=\"post\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<div class=\"img-holder\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<img src=\""+headImg+"\" alt>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<div class=\"details\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<h4><a href=\"article.html?articleId="+id+"\">"+title+"</a></h4>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<span class=\"date\"><i class=\"iconfont icon-icon-test5\"></i>"+authorName+"</span><br>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<span class=\"date\"><i class=\"iconfont icon-huo1\"></i>"+firepower+"</span>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t\t\t</div>";
+                    $("#rankList").append(rankListDiv);
+                }
+            }
+        });
+    }
+
+    // 点赞功能
+    function fun1(data1,data2){
+
+        var atcid = data1;
+        var likeid = "#addLike"+data2;
+
+        if($.cookie("likeId")!=atcid) {
+            $.ajax({
+                async: false,
+                type:"POST",
+                url:"article/add/like.json",
+                data: {articleId:atcid},
+                dataType:"text",
+                success:function (response) {
+
+                    console.log(response)
+
+                    alert("谢谢你的点赞");
+
+                    $("#liken i:first-child").attr("class","iconfont icon-icon-test17");
+                    $(likeid).html("<i class=\"iconfont icon-icon-test17\"></i>"+response);
+
+                    $.cookie(
+                        "likeId",
+                        atcid,//需要cookie写入的业务
+                        {
+                            "path":"/", //cookie的默认属性
+                        }
+                    );
+                }
+            });
+        }
+    }
+</script>
+</body>
+</html>

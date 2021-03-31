@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="wmcw09-member-zuul:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/wmcw09_member_zuul_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="wmcw09-member-zuul/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="wmcw09-member-zuul" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

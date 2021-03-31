@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base th:href="@{/}"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="irstheme">
+    <title>文章-智联麻涌</title>
+    <link href="css/index/themify-icons.css" rel="stylesheet">
+    <link href="css/index/flaticon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index/index.css">
+    <link href="css/index/owl.carousel.css" rel="stylesheet">
+    <link href="css/index/owl.theme.css" rel="stylesheet">
+    <link href="css/index/swiper.min.css" rel="stylesheet">
+    <link href="css/index/style.css" rel="stylesheet">
+    <link href="fonts/alibaba/iconfont.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet"href="css/article/pagination.css">
+    <style>
+        .header-style-1 {
+            background-color: #102541;
+        }
+    </style>
+</head>
+
+<body>
+<div class="page-wrapper">
+
+    <!-- 引入preloader -->
+    <div class="preloader" th:insert="~{includePortal :: preloader}"></div>
+
+    <!-- 引入header -->
+    <header id="header" class="site-header header-style-1" th:insert="~{includePortal :: header}"></header>
+
+    <br>
+
+    <!-- 主体内容 -->
+    <section class="blog-single-section blog-single-left-sidebar-section section-padding">
+        <div class="container">
+            <div class="row">
+                <!-- 右侧区域主体 -->
+                <div class="col col-md-8 col-md-push-4">
+                    <div class="blog-content">
+                        <!-- 文章主体 -->
+                        <div class="post format-standard-image" id="articleBody">
+
+                        </div>
+
+                        <!-- 评论区域 -->
+                        <div class="comments-area">
+                            <!-- 评论列表 -->
+                            <div class="comments-section">
+                                <h3 class="comments-title">评论</h3>
+                                <ol class="comments">
+                                    <li class="comment even thread-even depth-1" id="commentLi">
+
+                                    </li>
+                                </ol>
+                            </div>
+                            <!-- 评论提交框-->
+                            <div class="comment-respond">
+                                <h3 class="comment-reply-title">添加评论</h3>
+                                <form id="commentform" class="comment-form">
+                                    <div class="form-textarea">
+                                        <textarea id="comment" name="textcomment" placeholder="输入你的评论..."></textarea>
+                                    </div>
+                                    <div class="form-submit">
+                                        <input id="addComment" value="确定评论" type="submit">
+                                    </div>
+                                </form>
+                            </div>
+                        </div> <!-- 评论主体结束 -->
+                    </div>
+                </div><!-- 右侧区域主体结束 -->
+
+                <!-- 左侧区域主体 -->
+                <div class="col col-md-4 col-md-pull-8">
+                    <div class="blog-sidebar">
+
+                        <!-- 关于作者模块 -->
+                        <div class="widget about-widget" id="authorDiv">
+
+                        </div>
+
+                        <!-- 搜索框 -->
+                        <div class="widget search-widget">
+                            <h3>快速搜索</h3>
+                            <form  method="post">
+                                <div>
+                                    <input type="text" id="keywordInput" class="form-control" name="title" placeholder="请输入文章标题...">
+                                    <button id="searchBtn"><i class="iconfont icon-icon-test4"></i></button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- 智能导读模块 -->
+                        <div class="widget recent-post-widget">
+                            <h3>智能导读</h3>
+                            <div class="posts" id="smartRecommendation">
+
+                            </div>
+                        </div>
+
+                        <!-- 排行榜模块 -->
+                        <div class="widget recent-post-widget">
+                            <h3>热度排行榜</h3>
+                            <div class="posts" id="rankList">
+
+                            </div>
+                        </div>
+
+                        <!-- 作者其他文章模块 -->
+                        <div class="widget recent-post-widget">
+                            <h3>同作者文章</h3>
+                            <div class="posts" id="authorOtherArticle">
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 引入footer -->
+    <footer class="site-footer" th:insert="~{includePortal :: foot}"></footer>
+
+</div>
+
+<script src="js/index/index.js"></script>
+<script src="js/index/bootstrap.min.js"></script>
+<script src="js/index/jquery-plugin-collection.js"></script>
+<script src="js/index/script.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.pagination.js"></script>
+<script src="js/jquery.cookie.js"></script>
+
+<script th:inline="javascript">
+
+    $(function () {
+
+        // 获得该文章的ID
+        window.id = [[${articleId}]];
+
+        generateArticleBody();
+        generateSmartRecommendation();
+        generateRanklist();
+        generateOtherArticle();
+        generateCommentLi();
+        //访问量+1
+        addReadNum();
+    });
+
+    // 给添加评论按钮绑定响应函数
+    $("#addComment").click(function(){
+
+        // 获取评论文本
+        var comment = $("#comment").val();
+
+        // 调用分页函数刷新页面
+        addComment(comment);
+
+        return false;
+
+    });
+
+    //本篇文章
+    function generateArticleBody() {
+        $.ajax({
+            "url": "article/get/article/by/articleId.json",
+            "type":"post",
+            "async":false,
+            "dataType":"json",
+            "data":{
+                "articleId":window.id
+            },
+            "success":function (response) {
+
+                window.id = response.data.id;
+                var title = response.data.title;
+                window.authorName = response.data.authorName;
+                window.type = response.data.clas;
+                var comNum = response.data.comNum;
+                var readNum = response.data.readNum+1;
+                var likeNum = response.data.likeNum;
+                var publishTime = response.data.publishTime;
+                var headImg = response.data.headImg;
+                var textContent = response.data.textContent;
+
+
+                var articleDiv="" +
+                    "    <ul class=\"entry-meta\">\n" +
+                    "        <br>\n" +
+                    "        <h2>"+title+"</h2>\n" +
+                    "        <li><a><i class=\"iconfont icon-icon-test3\"></i>"+publishTime+"</a></li>\n" +
+                    "        <li><a id=\"addView\"><i class=\"iconfont icon-icon-test2\"></i>"+comNum+"</a></li>\n" +
+                    "        <li><a><i class=\"iconfont icon-icon-test\"></i>"+readNum+"</a></li>\n" +
+                    "        <li><a id=\"addLike\" onclick=\"fun1("+id+")\"><i class=\"iconfont icon-icon-test16\"></i>"+likeNum+"</a></li>\n" +
+                    "    </ul>\n" +
+                    "    <p>"+textContent+"</p>\n";
+
+                var authorDiv = "" +
+                    "<h3>关于作者</h3>\n" +
+                    "<div class=\"img-holder\">\n" +
+                    "    <img src=\""+headImg+"\" alt=\"云卷云舒\" style=\"width: 100px; height: 100px;\">\n" +
+                    "</div>\n" +
+                    "<h4>"+window.authorName+"</h4>\n" +
+                    "<p></p>";
+
+                $("#articleBody").append(articleDiv);
+                $("#authorDiv").append(authorDiv);
+
+            }
+        });
+    }
+
+    // 2.给查询按钮绑定单击响应函数
+    $("#searchBtn").click(function(){
+
+        // ①获取关键词数据赋值给对应的全局变量
+        var keyword = $("#keywordInput").val();
+
+        //把keyword放入session作用域中
+        window.sessionStorage.setItem('hrefKeyword',keyword);
+
+        //跳转到articleList.html
+        window.location.href="articleList.html";
+
+        return false;
+    });
+
+    //智能推荐
+    function generateSmartRecommendation() {
+
+        $.ajax({
+            "url": "article/get/smart/recommendation.json",
+            "type":"post",
+            "async":false,
+            "dataType":"json",
+            "success":function (response) {
+
+                for(var i = 0; i < response.data.length; i++){
+
+                    var object = response.data[i];
+
+                    var id = object.id;
+                    var title = object.title;
+                    var headImg = object.headImg;
+                    var authorName = object.authorName;
+                    var label = object.label;
+
+                    if(label=='你最常看'){
+                        var labelBg = " background-color: #FF7F50;\n" +
+                            "            border-radius: 3px;\n" +
+                            "            padding: 2px;\n" +
+                            "            color: white;";
+                    }else{
+                        var labelBg = " background-color: #2E8B57;\n" +
+                            "            border-radius: 3px;\n" +
+                            "            padding: 2px;\n" +
+                            "            color: white;";
+                    }
+
+                    var SmartRecommendationDiv= "<div class=\"post\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<div class=\"img-holder\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<img src=\""+headImg+"\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<div class=\"details\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<h4><a href=\"article.html?articleId="+id+"\">"+title+"</a></h4>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<span class=\"date\"><i class=\"iconfont icon-icon-test5\"></i>"+authorName+"</span><br>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<span class=\"date\" style=\""+labelBg+"\">"+label+"</span>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t\t\t</div>";
+
+
+                    $("#smartRecommendation").append(SmartRecommendationDiv);
+                }
+            }
+        });
+
+    };
+
+    //排行榜
+    function generateRanklist() {
+
+        $.ajax({
+            "url": "article/get/ranking/list.json",
+            "type":"post",
+            "async":false,
+            "dataType":"json",
+            "success":function (response) {
+
+                for(var i = 0; i < response.data.length; i++) {
+
+                    var object = response.data[i];
+
+                    var id = object.id;
+                    var title = object.title;
+                    var headImg = object.headImg;
+                    var authorName = object.authorName;
+                    var firepower = object.firepower;
+
+                    var rankListDiv = "<div class=\"post\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<div class=\"img-holder\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<img src=\""+headImg+"\" alt>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<div class=\"details\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<h4><a href=\"article.html?articleId="+id+"\">"+title+"</a></h4>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<span class=\"date\"><i class=\"iconfont icon-icon-test5\"></i>"+authorName+"</span><br>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<span class=\"date\"><i class=\"iconfont icon-huo1\"></i>"+firepower+"</span>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t\t\t</div>";
+                    $("#rankList").append(rankListDiv);
+                }
+            }
+        });
+    }
+
+    //作者其他文章
+    function generateOtherArticle() {
+
+        $.ajax({
+            "url": "article/get/other/author.json",
+            "type": "post",
+            "async": false,
+            "dataType": "json",
+            "data":{
+                "authorName": window.authorName,
+                "articleId": window.id
+            },
+            "success": function (response) {
+
+                for (var i = 0; i < response.data.length; i++) {
+
+                    var object = response.data[i];
+
+                    var id = object.id;
+                    var title = object.title;
+                    var headImg = object.headImg;
+                    var authorName = object.authorName;
+
+                    var otherArticleDiv = "" +
+                        "<div class=\"post\">\n" +
+                        "    <div class=\"img-holder\">\n" +
+                        "        <img src=\""+headImg+"\" alt>\n" +
+                        "    </div>\n" +
+                        "    <div class=\"details\">\n" +
+                        "        <h4><a href=\"article.html?articleId="+id+"\">"+title+"</a></h4>\n" +
+                        "        <span class=\"date\"><i class=\"iconfont icon-icon-test5\"></i>"+authorName+"</span>\n" +
+                        "    </div>\n" +
+                        "</div>";
+
+                    $("#authorOtherArticle").append(otherArticleDiv);
+                }
+            }
+        });
+    }
+
+    function generateCommentLi() {
+
+        $.ajax({
+            "url": "article/get/comment.json",
+            "type":"post",
+            "data": {
+                "articleId": window.id
+            },
+            "async":false,
+            "dataType":"json",
+            "success":function (response) {
+
+                console.log(response);
+
+                for(var i = 0;i<4;i++){
+
+                    var object = response.data[i];
+
+                    var userName = object.userName;
+                    var headImage = object.headImage;
+                    var publishTime = object.publishTime;
+                    var textComment = object.textComment;
+
+                    var commentDiv = "" +
+                        "<div>\n" +
+                        "    <div class=\"comment-theme\">\n" +
+                        "        <div class=\"comment-image\"><img src=\"" + headImage + "\" style=\"width: 5rem;\"></div>\n" +
+                        "    </div>\n" +
+                        "    <div class=\"comment-main-area\">\n" +
+                        "        <div class=\"comment-wrapper\">\n" +
+                        "            <div class=\"comments-meta\">\n" +
+                        "                <h4>" + userName + "<span class=\"comments-date\">发表于  " + publishTime + "</span></h4>\n" +
+                        "            </div>\n" +
+                        "            <div class=\"comment-area\">\n" +
+                        "                <p>" + textComment + "</p>\n" +
+                        "            </div>\n" +
+                        "        </div>\n" +
+                        "    </div>\n" +
+                        "</div>";
+
+                    $("#commentLi").append(commentDiv);
+                }
+            }
+        });
+
+    }
+
+    // 点赞功能
+    function fun1(data){
+
+        var articleId = data;
+
+        if($.cookie("likeId")!=articleId) {
+
+            $.ajax({
+                async: false,
+                type:"POST",
+                url:"article/add/like.json",
+                data: {articleId:articleId},
+                dataType:"text",
+                success:function (response) {
+
+                    console.log(response)
+
+                    alert("谢谢你的点赞");
+
+                    $("#liken i:first-child").attr("class","iconfont icon-icon-test17");
+                    $("#addLike").html("<i class=\"iconfont icon-icon-test17\"></i>"+response);
+
+                    $.cookie(
+                        "likeId",
+                        atcid,//需要cookie写入的业务
+                        {
+                            "path":"/", //cookie的默认属性
+                        }
+                    );
+                }
+            });
+        }
+    }
+    // 新增访问量
+    function addReadNum() {
+
+        $.ajax({
+            "url": "article/add/read/num.json",
+            "type": "post",
+            "async": false,
+            "dataType": "json",
+            "data":{
+                "articleId": window.id
+            }
+        });
+    }
+
+    // 添加评论
+    function addComment(comment) {
+
+        $.ajax({
+            "url":"article/add/comment.json",
+            "type": "post",
+            "async": false,
+            "dataType": "json",
+            "data": {
+                "comment": comment,
+                "articleId": window.id
+            },
+            "success":function (response) {
+
+                var result = response.result;
+
+                if (result == "SUCCESS") {
+
+                    alert("评论成功！");
+
+                    // 刷新页面
+                    window.location.reload();
+                }
+                if (result == "FAILED") {
+
+                    alert(response.message);
+
+                    return false;
+                }
+            }
+        });
+
+    }
+</script>
+</body>
+</html>

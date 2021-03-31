@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base th:href="@{/}"/>
+    <title>欢迎登录-智联麻涌</title>
+    <link rel="stylesheet" href="css/login/style.css">
+    <link href="css/login/popup-box.css" rel="stylesheet" type="text/css" media="all"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Sign In And Sign Up Forms  Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+
+    <style type="text/css">
+        label.error {
+            margin-top: 0px;
+            margin-left: 10px;
+            color: red;
+        }
+
+        a:link, a:visited {
+            color: #444;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #ff0000;
+        }
+        input[type="text"], input[type="password"] {
+            width: 93.5%;
+            padding: 15px;
+            border: 1px solid #7d7d7d;
+            outline: none;
+            font-size: 14px;
+            margin-bottom: 10px;
+            border-radius: 25px;
+        }
+        #emailNum {
+            width: 250px;
+        }
+        #getEmail {
+            margin-left: 10px;
+        }
+        input[type="button"] {
+            background: #e91e63;
+            padding: 10px 0;
+            font-size: 13px;
+            color: #fff;
+            cursor: pointer;
+            outline: none;
+            -webkit-transition: 0.5s all;
+            width: 20%;
+            border: none;
+            border-radius: 25px;
+        }
+        #register-age {
+            border-radius: 20px;
+            margin-left: 30px;
+            height: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="w3layouts">
+
+    <h1 style="color:#ea1e63;text-align:center">智联麻涌</h1>
+
+    <!-- 登录界面 -->
+    <div class="signin-agile">
+        <form action="auth/do/user/login" method="post">
+            <span class="login_msg" style="color:red" th:text="${loginMsg}">这是错误信息</span>
+            <h2>欢迎登录<a href="/" style="float:right;margin-top:12px;font-size:14px;">回到首页</a></h2>
+            <input id="login-username" type="text" name="name" class="input-material" placeholder="用户名" required="">
+            <input id="login-password" type="password" name="password" class="input-material" placeholder="密码" required="">
+            <a href="http://119.23.77.101:8080/wmcw/login.html">管理员登录</a>
+            <a href="personPassword.html">忘记密码?</a><br>
+            <input id="login" type="submit" class="btn btn-primary" value="登录">
+        </form>
+    </div>
+
+    <!-- 注册首界面 -->
+    <div class="signup-agileinfo">
+        <br/>
+        <h3>欢迎注册</h3>
+        <p>智联麻涌由奥利奥队开发</p>
+        <p>涵盖东莞市麻涌镇多个领域的服务</p>
+        <p>快加入我们吧</p>
+        <br/>
+        <br/>
+        <div class="more">
+            <a class="book popup-with-zoom-anim button-isi zoomIn animated" data-wow-delay=".5s" href="#small-dialog">点击注册</a>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+
+    <!-- 注册弹出界面 -->
+    <div class="pop-up">
+        <div id="small-dialog" class="mfp-hide book-form">
+            <h3>欢迎注册 </h3>
+            <form method="post" id="registerForm" name="form1">
+
+                <input id="register-username" class="input-material" type="text" name="name" placeholder="用户名" required=""/>
+
+                <span id="user_msg"></span>
+
+                <input id="register-phonenum" class="input-material" type="text" name="phoneNumber" placeholder="手机号码" required=""/>
+
+                <div class="layui-input-block">
+                    <input type="radio" name="sex" value="1" title="男" checked="">男
+                    <input type="radio" name="sex" value="2" title="女">女
+
+                    <input style="width: 100px;" id="register-age" class="input-material" type="text" name="age"  placeholder="年龄" required=""/>
+                </div>
+
+                <input id="register-mail" class="input-material" type="text" name="email"  placeholder="邮箱地址" required=""/>
+
+                <input id="emailNum" class="input-meterial" name="emailNum" type="text" placeholder="输入验证码" />
+
+                <input id="getEmail" type="button" class="btn btn-primary" onclick="setTime(this);getIdCode();" value="获取验证码" />
+
+                <input id="register-first-password" class="input-material" type="password" name="pwd" placeholder="密码" required=""/>
+
+                <input id="register-password" class="input-material" type="password" name="password" placeholder="重复密码" required=""/>
+
+                <input id="register" type="button" class="btn btn-primary" onclick="doRegister();" value="点击注册" />
+
+            </form>
+        </div>
+    </div>
+    <input id="data" type="hidden">
+    <div class="footer-w3l">
+        <p class="agileinfo"> ------仅供学习使用------ <a href="http://baidu.com" target="_blank">智联麻涌</a>
+        </p>
+    </div>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/login/jquery.magnific-popup.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/login/modernizr.custom.53451.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+                fixedContentPos: false,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: false,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+        });
+    </script>
+
+    <script src="js/login/jquery.validate.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+
+            //校验注册信息
+            $("#registerForm").validate({
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 10
+                    },
+                    pwd: {
+                        required: true,
+                        minlength: 6,
+                        maxlength: 15
+                    },
+                    phoneNumber: {
+                        required: true,
+                        digits: true,
+                        rangelength: [11, 11]
+                    },
+                    password: {
+                        required: false,
+                        equalTo: "#register-first-password"
+                    },
+                    emailNum: {
+                        required: true
+                    }
+                },
+                messages: {
+                    name: {
+                        required: "必须填写用户名",
+                        minlength: "用户名最小为2位",
+                        maxlength: "用户名最大为10位"
+                    },
+                    pwd: {
+                        required: "必须填写密码",
+                        minlength: "密码最小为6位",
+                        maxlength: "密码最小为15位"
+                    },
+                    phoneNumber: {
+                        required: "必须填写手机号",
+                        digits: "格式不正确",
+                        rangelength: "手机号码为11位"
+                    },
+                    password: {
+                        equalTo: "两次密码不一致"
+                    },
+                    emailNum: {
+                        required: "必须填写验证码"
+                    },
+                }
+            });
+        });
+
+        <!--获取验证码效果 -->
+        var countDown=120;
+        function setTime(val) {
+            if (countDown == 0) {
+                val.removeAttribute("disabled");
+                val.value = "获取验证码";
+                countDown = 120;
+                return;
+            } else {
+                val.setAttribute("disabled", true);
+                val.value = "重新发送(" + countDown + ")";
+                countDown--;
+            }
+            setTimeout(function () {
+                setTime(val)
+            }, 1000)
+        }
+
+        <!--获取邮箱验证码 -->
+        function getIdCode() {
+            //获取email
+            var email = document.getElementById("register-mail").value;
+
+            console.log(email);
+
+            // 发送ajax请求
+            $.ajax({
+                "url": "auth/do/user/send/email",
+                "type": "post",
+                "data": {
+                    "email": email
+                },
+                "async": false,
+                "dataType": "json",
+                "success": function (response) {
+                    console.log(response);
+
+                    window.emailCode = response.data;
+
+                    var result = response.result;
+
+                    //判断是否成功
+                    if(result == "SUCCESS") {
+                        alert("发送成功");
+                    }
+
+                    if(result == "FAILED") {
+                        alert(response.message);
+                    }
+                },
+                "error": function (response) {
+                    alert("请求出错！请重试！")
+                }
+            });
+        }
+
+        //注册功能
+        function doRegister() {
+
+            var name = document.getElementById("register-username").value;
+            var phoneNumber = document.getElementById("register-phonenum").value;
+            var email = document.getElementById("register-mail").value;
+            var age = document.getElementById("register-age").value;
+            var sex = $("input[name = 'sex']:checked").val();
+            var password = document.getElementById("register-first-password").value;
+
+            //获取用户输入的验证码
+            var emailNum = document.getElementById("emailNum").value;
+            //获取真实发送的数据
+            var emailCode = window.emailCode;
+
+            if(emailNum!=emailCode){
+                alert("验证码不正确！请重新获取！");
+            }else {
+
+                //发送ajax请求
+                $.ajax({
+                    "url": "auth/do/user/register.json",
+                    "type": "post",
+                    "data": {
+                        "name": name,
+                        "phoneNumber": phoneNumber,
+                        "email": email,
+                        "age": age,
+                        "sex": sex,
+                        "password": password
+                    },
+                    "async": false,
+                    "dataType": "json",
+                    "success": function (response) {
+
+                        console.log(response);
+
+                        var result = response.result;
+
+                        // 判断result是否成功
+                        if(result == "SUCCESS") {
+                            alert(response.data);
+                        }
+                        if(result == "FAILED") {
+                            alert(response.message);
+                        }
+                    },
+                    "error": function (response) {
+                        alert("请求出错！请重试！")
+                    }
+                });
+            }
+        }
+    </script>
+
+    <!--验证用户名是否被注册 -->
+    <script type="text/javascript">
+        $(function () {
+            //给注册用户名绑定blur事件
+            $("#register-username").blur(function () {
+                //获取用户名信息
+                var username = $(this).val();
+
+                //发送ajax请求
+                $.ajax({
+                    "url": "auth/do/user/name/unique.json",
+                    "type": "post",
+                    "data": {
+                        "name": username
+                    },
+                    "async": false,
+                    "dataType": "json",
+                    "success": function (response) {
+                        console.log(response);
+                        var result = response.result;
+                        // 判断result是否成功
+                        if(result == "FAILED") {
+                            alert(response.message);
+                        }
+                    },
+                    "error": function (response) {
+                        alert("请求出错！请重试！")
+                    }
+                });
+            });
+        });
+
+    </script>
+
+</body>
+</html>

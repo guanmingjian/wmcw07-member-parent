@@ -1,0 +1,447 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base th:href="@{/}"/>
+    <title>精选酒店-智联麻涌</title>
+    <link href="css/hotel/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="css/hotel/style.css" rel='stylesheet' type='text/css' />
+    <link href="css/hotel/animate.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet"href="css/hotel/pagination.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Hotel Deluxe Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+            Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar(){
+            window.scrollTo(0,1);
+        }
+    </script>
+
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.pagination.js"></script>
+    <script src="js/hotel/jquery.easydropdown.js"></script>
+    <script src="js/hotel/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <style>
+        .content_menu ul li>a{
+            font-size:15px;
+        }
+        .content_menu ul li a {
+            margin: 5px;
+        }
+        .content_dropdown {
+            max-width: 150px;
+        }
+        .living_middle {
+            padding-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 搜索框  -->
+<div class="banner">
+    <div class="container_wrap">
+        <h1>智慧Smart 有你想要</h1>
+        <br>
+        <!--搜索框-->
+        <form>
+            <input id="keywordInput" type="text" name="keyword" placeholder="请输入你想找的酒店">
+            <div class="contact_btn">
+                <label class="btn1 btn-2 btn-2g"><input name="submit" type="submit" id="searchBtn" value="智能搜索"></label>
+            </div>
+        </form>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<!-- 导航框-->
+<div class="content_top">
+    <div class="container">
+
+        <div class="col-md-4 bottom_nav">
+            <div class="content_menu">
+                <ul>
+                    <li class="active"><a href="hotel.html">智能推荐</a></li>
+                    <li><a href="hotel.html">性价比酒店</a></li>
+                    <li><a href="hotel.html">今日优惠</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-4 content_dropdown1" align="center">
+            <div class="content_dropdown" >
+                <select class="dropdown" tabindex="10" data-settings='{"wrapperClass":"metro"}' id="location">
+                    <option value="" data-actionName="1" selected>位置</option>
+                    <option value="1" data-actionName="2">华阳湖附近</option>
+                    <option value="2" data-actionName="3">大学附近</option>
+                    <option value="3" data-actionName="4">宵夜街附近</option>
+                    <option value="4" data-actionName="5">古梅路附近</option>
+                    <option value="5" data-actionName="6">星河广场附近</option>
+                    <option value="6" data-actionName="7">麻涌大道附近</option>
+                    <option value="7" data-actionName="8">大步村附近</option>
+                </select>
+            </div>
+            <div class="content_dropdown">
+                <select class="dropdown" tabindex="10" data-settings='{"wrapperClass":"metro"}' id="price">
+                    <option value="" data-actionName="1" selected>价格</option>
+                    <option value="1" data-actionName="2">0-100</option>
+                    <option value="2" data-actionName="3">100-200</option>
+                    <option value="3" data-actionName="4">200-300</option>
+                    <option value="4" data-actionName="5">300-400</option>
+                    <option value="5" data-actionName="6">400-500</option>
+                    <option value="6" data-actionName="7">500-1000</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-4 content_dropdown1" align="center">
+            <div class="content_dropdown">
+                <select class="dropdown" tabindex="10" data-settings='{"wrapperClass":"metro"}' id="star">
+                    <option value="" data-actionName="1" selected>星级</option>
+                    <option value="4" data-actionName="2">4星级</option>
+                    <option value="5" data-actionName="3">5星级</option>
+                </select>
+            </div>
+            <div class="content_dropdown">
+                <select class="dropdown" tabindex="10" data-settings='{"wrapperClass":"metro"}' id="type">
+                    <option value="" data-actionName="1" selected>类型</option>
+                    <option value="金牌酒店" data-actionName="2">金牌酒店</option>
+                    <option value="舒适型" data-actionName="3">舒适型</option>
+                    <option value="经济型" data-actionName="4">经济型</option>
+                    <option value="高档型" data-actionName="5">高档型</option>
+                    <option value="商务型" data-actionName="6">商务型</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="living_middle">
+
+    <!-- 酒店模块 -->
+    <div id="PageBody" class="container">
+
+    </div>
+
+    <br>
+
+    <!-- 分页模块 -->
+    <div class="page" align="center">
+        <div id="Pagination" class="pagination">
+
+        </div>
+    </div>
+</div>
+
+<div class="living_bottom">
+    <div class="container">
+        <h2 class="title block-title">智联麻涌</h2>
+        <div class="col-md-6 post_left wow fadeInLeft" data-wow-delay="0.4s">
+            <div class="mask1"><img src="images/hotel/pic4.jpg" alt="image" class="img-responsive zoom-img" /></div>
+            <p>智联麻涌Web，由中大新华五名大学生共同打造，力求推进麻涌娱乐和消费生态，搭建一站式服务网站，在这里你能享受多个领域的服务，全景游览麻涌镇的美丽，智能选择出行工具，为你的出行考虑周全.</p>
+            <div class="divider"></div>
+        </div>
+        <div class="col-md-6 post_left wow fadeInRight" data-wow-delay="0.4s">
+            <div class="mask1"><img src="images/hotel/pic5.jpg" alt="image" class="img-responsive zoom-img" /></div>
+            <p>智联麻涌Web-精选酒店，实时根据市场的喜爱度和入住率推荐给用户，所推荐的酒店环境好、服务周到，设施完善，让你少点选择的烦恼，帮助你做出最明智的选择，让你的旅途更加美好轻松.</p>
+            <div class="divider"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script>
+    $(function () {
+
+        window.pageNum=1;
+        window.pageSize = 9;
+        window.keyword = "";
+
+        // 调用执行分页的函数，显示分页效果
+        generatePage();
+        $.ajax({
+            "url": "/user/visit/hotel",
+            "type":"post",
+            "async":false,
+            "dataType":"json",
+            "contentType":"application/json;charset=UTF-8"  //传出Json传值必需
+        });
+    });
+
+    // 给查询按钮绑定单击响应函数
+    $("#searchBtn").click(function(){
+
+        window.pageNum=1;
+        window.pageSize = 9;
+
+        // 获取关键词数据赋值给对应的全局变量
+        window.keyword = $("#keywordInput").val();
+        // 调用分页函数刷新页面
+        generatePage('','','','');
+
+        return false;
+    });
+
+    // 选择框选择函数
+    $("#location").change(function () {
+        var location = $(this).val();
+        var price = $("#price option:selected").val();
+        var star = $("#star option:selected").val();
+        var type = $("#type option:selected").val();
+
+        // 调用分页函数刷新页面
+        generatePage(location,price,star,type);
+        return false;
+    });
+
+    $("#price").change(function () {
+        var price = $(this).val();
+        var location = $("#location option:selected").val();
+        var star = $("#star option:selected").val();
+        var type = $("#type option:selected").val();
+
+        // 调用分页函数刷新页面
+        generatePage(location,price,star,type);
+        return false;
+    });
+
+    $("#star").change(function () {
+        var star = $(this).val();
+        var location = $("#location option:selected").val();
+        var price = $("#price option:selected").val();
+        var type = $("#type option:selected").val();
+
+        // 调用分页函数刷新页面
+        generatePage(location,price,star,type);
+        return false;
+    });
+
+    $("#type").change(function () {
+        var type = $(this).val();
+        var location = $("#location option:selected").val();
+        var price = $("#price option:selected").val();
+        var star = $("#star option:selected").val();
+
+        // 调用分页函数刷新页面
+        generatePage(location,price,star,type);
+        return false;
+    });
+
+    // 执行分页，生成页面效果，任何时候调用这个函数都会重新加载页面
+    function generatePage(location,price,star,type) {
+
+        // 1.获取分页数据
+        var pageInfo = getPageInfoRemote(location,price,star,type);
+
+        // 2.填充酒店
+        fillHotelBody(pageInfo);
+    }
+
+    // 远程访问服务器端程序获取pageInfo数据
+    function getPageInfoRemote(location,price,star,type) {
+
+        var object = {
+            "pageNum": window.pageNum,
+            "pageSize": window.pageSize,
+            "keyword": window.keyword,
+            "location": location,
+            "price": price,
+            "star": star,
+            "type": type
+        };
+
+        console.log(JSON.stringify(object));
+
+        // 调用$.ajax()函数发送请求并接受$.ajax()函数的返回值
+        var ajaxResult = $.ajax({
+            "url": "portal/get/hotel.json",
+            "type":"post",
+            "data": JSON.stringify(object),        //Json传值必需,且只能由一个data
+            "async":false,
+            "dataType":"json",      //返回Json传值必需
+            "contentType":"application/json;charset=UTF-8"  //传出Json传值必需
+        });
+
+        console.log(ajaxResult);
+
+        // 判断当前响应状态码是否为200
+        var statusCode = ajaxResult.status;
+
+        // 如果当前响应状态码不是200，说明发生了错误或其他意外情况，显示提示消息，让当前函数停止执行
+        if(statusCode != 200) {
+            alert("失败！响应状态码="+statusCode+" 说明信息="+ajaxResult.statusText);
+            return null;
+        }
+
+        // 如果响应状态码是200，说明请求处理成功，获取pageInfo
+        var resultEntity = ajaxResult.responseJSON;
+
+        // 从resultEntity中获取result属性
+        var result = resultEntity.result;
+
+        // 判断result是否成功
+        if(result == "FAILED") {
+            alert(resultEntity.message);
+            return null;
+        }
+
+        // 确认result为成功后获取pageInfo
+        var pageInfo = resultEntity.data;
+
+        // 返回pageInfo
+        return pageInfo;
+    }
+
+    // 填充表格
+    function fillHotelBody(pageInfo) {
+
+        // 清除tbody中的旧的内容
+        $("#PageBody").empty();
+
+        // 这里清空是为了让没有搜索结果时不显示页码导航条
+        $("#Pagination").empty();
+
+        // 判断pageInfo对象是否有效
+        if(pageInfo == null || pageInfo == undefined || pageInfo.list == null || pageInfo.list.length == 0) {
+
+            $("#PageBody").append("<div align=\"center\"><p>抱歉，没有找到该信息！</p></div>");
+
+            return ;
+        }
+
+        // 使用pageInfo的list属性填充tbody
+        for(var i = 0; i < pageInfo.list.length; i++) {
+
+            var object = pageInfo.list[i];
+
+            var type = object.type;
+            var name = object.name;
+            var briefIntro = object.briefIntro;
+            var location = object.location;
+            var price = object.price;
+            var imgPath = object.imgPath;
+            var starLevel = object.starLevel;
+            var hotelHref = object.href;
+
+            if(starLevel=='4'){
+                starLevel='/imgs/hotel/star4.png';
+            }else {
+                starLevel='/imgs/hotel/star5.png';
+            }
+
+            if(i==0||i%3==0){
+                var gridDivBegin = "<div class=\"educate_grid\">";
+                $("#PageBody").append(gridDivBegin);
+            }
+
+            var hotelDiv="" +
+                "<div class=\"col-md-4 wow fadeInLeft\" data-wow-delay=\"0.4s\">\n" +
+                "                    <div class=\"living_box\">\n" +
+                "                        <a href=\""+hotelHref+"\"target=\"_blank\">\n" +
+                "                            <img src=\""+imgPath+"\" class=\"img-responsive\" alt=\"\"/>\n" +
+                "                            <span class=\"sale-box\">\n" +
+                "                            <span class=\"sale-label\">"+type+"</span>\n" +
+                "                        </span>\n" +
+                "                        </a>\n" +
+                "                        <div class=\"living_desc\">\n" +
+                "                            <h3><a href=\""+hotelHref+"\"target=\"_blank\">"+name+"</a></h3>\n" +
+                "                            <p>"+briefIntro+"</p>\n" +
+                "                            <p>地址："+location+"</p>\n" +
+                "                            <p class=\"educate\"><img src=\""+starLevel+"\" alt=\"star\"/></p>\n" +
+                "                            <p class=\"price\">￥"+price+"</p>\n" +
+                "                        </div>\n" +
+                "                        <table border=\"1\" class=\"propertyDetails\">\n" +
+                "                            <tbody>\n" +
+                "                            <tr>\n" +
+                "                                <td><img src=\"images/hotel/area.png\" alt=\"\" style=\"margin-right:7px;\">2,412m</td>\n" +
+                "                                <td><img src=\"images/hotel/bed.png\" alt=\"\" style=\"margin-right:7px;\">6 Beds</td>\n" +
+                "                                <td><img src=\"images/hotel/drop.png\" alt=\"\" style=\"margin-right:7px;\">3 Baths</td>\n" +
+                "                            </tr>\n" +
+                "                            </tbody>\n" +
+                "                        </table>\n" +
+                "                    </div>\n" +
+                "                </div>";
+
+            $("#PageBody").append(hotelDiv);
+
+            if(i!=0&&(i+1)%3==0){
+                var gridDivEnd = "<div class=\"clearfix\"></div>\n" +
+                    "            </div>";
+                $("#PageBody").append(gridDivEnd);
+            }
+        }
+
+        // 生成分页导航条
+        generateNavigator(pageInfo);
+    }
+
+    // 生成分页页码导航条
+    function generateNavigator(pageInfo) {
+
+        // 获取总记录数
+        var totalRecord = pageInfo.total;
+
+        // 声明相关属性
+        var properties = {
+            "num_edge_entries": 2,
+            "num_display_entries": 3,
+            "callback": paginationCallBack,
+            "items_per_page": pageInfo.pageSize,
+            "current_page": pageInfo.pageNum - 1,
+            "prev_text": "上一页",
+            "next_text": "下一页"
+        }
+
+        // 调用pagination()函数
+        $("#Pagination").pagination(totalRecord, properties);
+    }
+
+    // 翻页时的回调函数
+    function paginationCallBack(pageIndex, jQuery) {
+
+        // 修改window对象的pageNum属性
+        window.pageNum = pageIndex + 1;
+
+        // 调用分页函数
+        generatePage();
+
+        window.scrollTo(450,400);
+
+        // 取消页码超链接的默认行为
+        return false;
+    }
+
+    // 初始化选择框
+    function clearSelect() {
+
+        $('#location option').each(function(){
+            $(this).attr("selected",false);
+        });
+        $('#location').find("option[data-actionName='1']").prop("selected",true);
+
+        $('#price option').each(function(){
+            $(this).attr("selected",false);
+        });
+        $('#price').find("option[data-actionName='1']").prop("selected",true);
+
+        $('#star option').each(function(){
+            $(this).attr("selected",false);
+        });
+        $('#star').find("option[data-actionName='1']").prop("selected",true);
+
+        $('#type option').each(function(){
+            $(this).attr("selected",false);
+        });
+        $('#type').find("option[data-actionName='1']").prop("selected",true);
+    }
+</script>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 引入head -->
+<head th:insert="~{includePerson :: head}"></head>
+<body>
+
+    <!-- 引入header -->
+    <header class="ydc-header" th:insert="~{includePerson :: header}"></header>
+
+    <!-- 主体 -->
+    <section>
+        <div class="ydc-content-slide ydc-body">
+            <div class="ydc-flex">
+
+                <!-- 引入left -->
+                <div th:insert="~{includePerson :: left}" class="ydc-column ydc-column-2"></div>
+
+                <!-- 右侧区域 -->
+                <div class="ydc-column ydc-column-8">
+                    <div class="ydc-entered-box">
+                        <div class="ydc-content-right">
+                            <div class="ydc-right-head">
+                                <div class="ydc-right-head-info">
+                                    <dl>
+                                        <a href="#">
+                                            <dt>总订阅</dt>
+                                            <dd>14</dd>
+                                        </a>
+                                    </dl>
+                                    <dl>
+                                        <a href="#">
+                                            <dt>总阅读</dt>
+                                            <dd>224</dd>
+                                        </a>
+                                    </dl>
+                                    <dl>
+                                        <a href="#">
+                                            <dt>昨日阅读</dt>
+                                            <dd>14</dd>
+                                        </a>
+                                    </dl>
+                                    <dl>
+                                        <a href="#">
+                                            <dt>总数据指数</dt>
+                                            <dd>158</dd>
+                                        </a>
+                                    </dl>
+                                    <dl>
+                                        <a href="#">
+                                            <dt>总数据指数</dt>
+                                            <dd>158</dd>
+                                        </a>
+                                    </dl>
+                                </div>
+                            </div>
+
+                            <!-- gongGao begin -->
+                            <div class="ydc-loading-box">
+                                <div class="ydc-tabPanel">
+                                    <div>
+                                        <ul>
+                                            <li class="hit">我的文章</li>
+                                            <li>我的图集</li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="ydc-panes">
+                                        <div class="ydc-pane" style="display:block;">
+                                            <ol class="ydc-pane-list">
+                                                <li>
+                                                    <a href="article.html?articleId=6" target="_blank">觅食麻涌第六站——李大爷串串<i>new</i></a>
+                                                    <span>2020-03-17 13:07:04</span>
+                                                </li>
+                                                <li>
+                                                    <a href="article.html?articleId=5" target="_blank">觅食麻涌第五站——小田豆浆店</a>
+                                                    <span>2020-03-15 19:20:22</span>
+                                                </li>
+                                                <li>
+                                                    <a href="article.html?articleId=4" target="_blank">觅食麻涌第四站——正新鸡排</a>
+                                                    <span>2020-03-12 08:03:21</span>
+                                                </li>
+                                                <li>
+                                                    <a href="article.html?articleId=3" target="_blank">觅食麻涌第三站——古梅甜品店</a>
+                                                    <span>2020-03-11 10:05:56</span>
+                                                </li>
+                                                <li>
+                                                    <a href="article.html?articleId=2" target="_blank">觅食麻涌第二站——Vigo维果茶</a>
+                                                    <span>2020-03-10 14:01:20</span>
+                                                </li>
+                                                <li>
+                                                    <a href="article.html?articleId=1" target="_blank">觅食麻涌第一站——Cat Cafe</a>
+                                                    <span>2020-03-07 11:05:40</span>
+                                                </li>
+                                            </ol>
+                                            <div class="ydc-pagination">
+                                                <ol>
+                                                    <li class="ydc-previous-item">
+                                                        <button class="ydc-previous-item-btn-medium ydc-disabled">
+                                                            <span>上一页</span>
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <button class="ydc-previous-item-btn-medium cur">1</button>
+                                                    </li>
+                                                    <li class="ydc-previous-item">
+                                                        <button class="ydc-previous-item-btn-medium">
+                                                            <span>下一页</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="ydc-item-quick">
+                                                        第<div class="ydc-item-quick-kun"><input type="number" aria-invalid="false" class=""></div>页
+                                                        <button style="margin-left:5px;" class="ydc-previous-item-btn-medium">
+                                                            <span>跳转</span>
+                                                        </button>
+                                                    </li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                        <div class="ydc-pane">
+                                            <ol class="ydc-pane-list">
+                                                <li>
+                                                    <a href="/imgs/huayanghu/img2_1.jpg" target="_blank">华阳桥</a>
+                                                    <span>2020-03-12 08:03:21</span>
+                                                </li>
+                                                <li>
+                                                    <a href="/imgs/huayanghu/img2_2.jpg" target="_blank">雾森仙境</a>
+                                                    <span>2020-03-11 10:05:56</span>
+                                                </li>
+                                                <li>
+                                                    <a href="/imgs/huayanghu/img2_4.jpg" target="_blank">掩映</a>
+                                                    <span>2020-03-10 14:01:20</span>
+                                                </li>
+                                                <li>
+                                                    <a href="/imgs/chuangkefang/img3_1.jpg" target="_blank">汇聚</a>
+                                                    <span>2020-03-08 05:43:21</span>
+                                                </li>
+                                                <li>
+                                                    <a href="page.html" target="_blank">湖畔·新华</a>
+                                                    <span>2020-03-05 13:31:30</span>
+                                                </li>
+                                            </ol>
+                                            <div class="ydc-pagination">
+                                                <ol>
+                                                    <li class="ydc-previous-item">
+                                                        <button class="ydc-previous-item-btn-medium ydc-disabled">
+                                                            <span>上一页</span>
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <button class="ydc-previous-item-btn-medium cur">1</button>
+                                                    </li>
+                                                    <li>
+                                                        <button class="ydc-previous-item-btn-medium">2</button>
+                                                    </li>
+                                                    <li>
+                                                        <button class="ydc-previous-item-btn-medium">3</button>
+                                                    </li>
+                                                    <li class="ydc-previous-item">
+                                                        <button class="ydc-previous-item-btn-medium">
+                                                            <span>下一页</span>
+                                                        </button>
+                                                    </li>
+                                                    <li class="ydc-item-quick">
+                                                        第<div class="ydc-item-quick-kun"><input type="number" aria-invalid="false" class=""></div>页
+                                                        <button style="margin-left:5px;" class="ydc-previous-item-btn-medium">
+                                                            <span>跳转</span>
+                                                        </button>
+                                                    </li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- gongGao End -->
+                        </div>
+                    </div>
+                </div>
+                <!-- 右侧结束 -->
+            </div>
+        </div>
+
+        <!-- 引入foot -->
+        <div class="ydc-footer" th:include="~{includePerson :: foot}"></div>
+
+    </section>
+
+</body>
+</html>

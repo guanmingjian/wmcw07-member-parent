@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="wmcw13-member-article-consumer:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/wmcw13_member_article_consumer_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="wmcw13-member-article-consumer/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="wmcw13-member-article-consumer" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

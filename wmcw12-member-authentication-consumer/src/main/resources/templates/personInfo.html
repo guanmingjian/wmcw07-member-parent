@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 引入head -->
+<head th:insert="~{includePerson :: head}"></head>
+<body>
+
+<!-- 引入header -->
+<header class="ydc-header" th:insert="~{includePerson :: header}"></header>
+
+<!-- 主体 -->
+<section>
+    <div class="ydc-content-slide ydc-body">
+        <div class="ydc-flex">
+
+            <!-- 引入left -->
+            <div th:insert="~{includePerson :: left}" class="ydc-column ydc-column-2"></div>
+
+            <!-- 右侧区域 -->
+            <div class="ydc-column ydc-column-8">
+                <div class="ydc-release-content">
+                    <div class="ydc-tabPanel ydc-tabPanel-release">
+                        <div class="ydc-release-tab-head">
+                            <ul>
+                                <li class="hit">帐号设置</li>
+                            </ul>
+                        </div>
+                        <div class="ydc-panes">
+                            <div class="ydc-pane ydc-pane-clear" style="display:block;">
+                                <div class="ydc-reg-form-group clearfix">
+                                    <label>帐号昵称</label>
+                                    <div class="ydc-reg-form-input">
+                                        <label th:text="${session.user.name}">热巴sama</label>
+                                    </div>
+                                </div>
+
+                                <div class="ydc-reg-form-group clearfix">
+                                    <label>帐号头像</label>
+                                    <div class="ydc-reg-form-input">
+                                        <label></label>
+                                        <div class="ydc-reg-form-text ydc-reg-form-user-logo">
+                                            <img th:src="${session.user.headImage}" src="images/person/icon/photo.png" alt="headImages">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ydc-reg-form-group clearfix">
+                                    <label>帐号简介</label>
+                                    <div class="ydc-reg-form-input">
+                                        <label>我热爱唱歌跳舞！</label>
+                                    </div>
+                                </div>
+
+                                <div class="ydc-reg-form-group clearfix">
+                                    <label>帐号详情</label>
+                                    <div class="ydc-reg-form-input">
+                                        <label th:text="${session.user.registerTime}">注册于 2020-03-28 19:55</label>
+                                    </div>
+                                </div>
+
+                                <div class="ydc-reg-form-group clearfix">
+                                    <label>性别</label>
+                                    <div class="ydc-reg-form-input">
+                                        <label th:if="${session.user.sex==1}">男</label>
+                                        <label th:if="${session.user.sex!=1}">女</label>
+                                    </div>
+                                </div>
+
+                                <div class="ydc-reg-form-group clearfix">
+                                    <label>生日</label>
+                                    <div class="ydc-reg-form-input">
+                                        <label th:text="${session.user.birth}">1998.08.08</label>
+                                    </div>
+                                </div>
+
+                                <div class="ydc-reg-form-group clearfix">
+                                    <label>联系手机</label>
+                                    <div class="ydc-reg-form-input">
+                                        <label th:text="${session.user.phoneNumber}">185****2894 已验证</label>
+                                    </div>
+                                </div>
+
+                                <div class="ydc-reg-form-group clearfix">
+                                    <label>邮箱</label>
+                                    <div class="ydc-reg-form-input">
+                                        <label th:text="${session.user.email}">aui_cn@163.com</label>
+                                    </div>
+                                </div>
+
+                                <div class="ydc-reg-form-group clearfix" style="margin-top:40px;">
+                                    <div class="ydc-reg-form-button" style="margin-left:255px;">
+                                        <a class="btn fl" href="personEdit.html">修改</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 右侧结束 -->
+        </div>
+    </div>
+
+    <!-- 引入foot -->
+    <div class="ydc-footer" th:include="~{includePerson :: foot}"></div>
+
+</section>
+
+</body>
+</html>

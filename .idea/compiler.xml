@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="wmcw09-member-zuul" />
+        <module name="wmcw14-member-hotel-consumer" />
+        <module name="wmcw10-member-mysql-provider" />
+        <module name="wmcw13-member-article-consumer" />
+        <module name="wmcw15-member-cate-consumer" />
+        <module name="wmcw11-member-redis-provider" />
+        <module name="wmcw12-member-authentication-consumer" />
+        <module name="wmcw17-member-api" />
+        <module name="wmcw16-member-pay-consumer" />
+        <module name="wmcw08-member-eureka" />
+        <module name="wmcw05-common-util" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="wmcw05-common-util" target="7" />
+      <module name="wmcw06-common-reverse" target="1.5" />
+      <module name="wmcw07-member-parent" target="1.8" />
+      <module name="wmcw08-member-eureka" target="1.8" />
+      <module name="wmcw09-member-zuul" target="1.8" />
+      <module name="wmcw10-member-mysql-provider" target="1.8" />
+      <module name="wmcw11-member-redis-provider" target="1.8" />
+      <module name="wmcw12-member-authentication-consumer" target="1.8" />
+      <module name="wmcw13-member-article-consumer" target="1.8" />
+      <module name="wmcw14-member-hotel-consumer" target="1.8" />
+      <module name="wmcw15-member-cate-consumer" target="1.8" />
+      <module name="wmcw16-member-pay-consumer" target="1.8" />
+      <module name="wmcw17-member-api" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="wmcw08-member-eureka" options="-parameters" />
+      <module name="wmcw09-member-zuul" options="-parameters" />
+      <module name="wmcw10-member-mysql-provider" options="-parameters" />
+      <module name="wmcw11-member-redis-provider" options="-parameters" />
+      <module name="wmcw12-member-authentication-consumer" options="-parameters" />
+      <module name="wmcw13-member-article-consumer" options="-parameters" />
+      <module name="wmcw14-member-hotel-consumer" options="-parameters" />
+      <module name="wmcw15-member-cate-consumer" options="-parameters" />
+      <module name="wmcw16-member-pay-consumer" options="-parameters" />
+      <module name="wmcw17-member-api" options="-parameters" />
+    </option>
+  </component>
+</project>

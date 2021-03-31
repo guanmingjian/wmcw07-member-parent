@@ -1,0 +1,16 @@
+server:
+  port: 4000
+spring:
+  application:
+    name: oreo-wmcw-auth
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+  http:
+    encoding:
+      force: true
+      charset: utf-8
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka

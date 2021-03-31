@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- 引入head -->
+<head th:insert="~{includePerson :: head}"></head>
+<body>
+
+<!-- 引入header -->
+<header class="ydc-header" th:insert="~{includePerson :: header}"></header>
+
+<!-- 主体 -->
+<section>
+    <div class="ydc-content-slide ydc-body">
+        <div class="ydc-flex">
+
+            <!-- 引入left -->
+            <div th:insert="~{includePerson :: left}" class="ydc-column ydc-column-2"></div>
+
+            <!-- 右侧区域 -->
+            <div class="ydc-column ydc-column-8">
+                <div class="ydc-entered-box">
+                    <div class="ydc-content-right">
+
+                        <!-- gongGao begin -->
+                        <div class="ydc-loading-box">
+                            <div class="ydc-tabPanel">
+                                <div>
+                                    <ul>
+                                        <li class="hit">美食</li>
+                                        <li>酒店</li>
+                                        <li>文章</li>
+                                    </ul>
+
+                                </div>
+                                <div class="ydc-panes">
+                                    <div class="ydc-pane" style="display:block;">
+                                        <ol class="ydc-pane-list">
+                                            <li>
+                                                <a href="article.html?articleId=6" target="_blank">觅食麻涌第六站——李大爷串串<i>new</i></a>
+                                                <span>2020-03-17 13:07:04</span>
+                                            </li>
+
+                                            <li>
+                                                <a href="article.html?articleId=4" target="_blank">觅食麻涌第四站——正新鸡排</a>
+                                                <span>2020-03-12 08:03:21</span>
+                                            </li>
+                                        </ol>
+                                        <div class="ydc-pagination">
+                                            <ol>
+                                                <li class="ydc-previous-item">
+                                                    <button class="ydc-previous-item-btn-medium ydc-disabled">
+                                                        <span>上一页</span>
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button class="ydc-previous-item-btn-medium cur">1</button>
+                                                </li>
+                                                <li>
+                                                    <button class="ydc-previous-item-btn-medium">2</button>
+                                                </li>
+                                                <li>
+                                                    <button class="ydc-previous-item-btn-medium">3</button>
+                                                </li>
+                                                <li class="ydc-previous-item">
+                                                    <button class="ydc-previous-item-btn-medium">
+                                                        <span>下一页</span>
+                                                    </button>
+                                                </li>
+                                                <li class="ydc-item-quick">
+                                                    第<div class="ydc-item-quick-kun"><input type="number" aria-invalid="false" class=""></div>页
+                                                    <button style="margin-left:5px;" class="ydc-previous-item-btn-medium">
+                                                        <span>跳转</span>
+                                                    </button>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    <div class="ydc-pane">
+                                        <ol class="ydc-pane-list">
+                                            <li>
+                                                <a href="https://hotels.ctrip.com/hotel/6874559.html#ctm_ref=www_hp_bs_lst">西园酒店<i>new</i></a>
+                                                <span>2020-04-01 19:02:15</span>
+                                            </li>
+                                            <li>
+                                                <a href="https://hotels.ctrip.com/hotel/3003685.html">古梅商务酒店</a>
+                                                <span>2020-03-17 13:07:04</span>
+                                            </li>
+                                            <li>
+                                                <a href="https://hotels.ctrip.com/hotel/21788407.html">梵啡酒店</a>
+                                                <span>2020-03-12 17:50:25</span>
+                                            </li>
+                                        </ol>
+                                        <div class="ydc-pagination">
+                                            <ol>
+                                                <li class="ydc-previous-item">
+                                                    <button class="ydc-previous-item-btn-medium ydc-disabled">
+                                                        <span>上一页</span>
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button class="ydc-previous-item-btn-medium cur">1</button>
+                                                </li>
+                                                <li>
+                                                    <button class="ydc-previous-item-btn-medium">2</button>
+                                                </li>
+                                                <li>
+                                                    <button class="ydc-previous-item-btn-medium">3</button>
+                                                </li>
+                                                <li class="ydc-previous-item">
+                                                    <button class="ydc-previous-item-btn-medium">
+                                                        <span>下一页</span>
+                                                    </button>
+                                                </li>
+                                                <li class="ydc-item-quick">
+                                                    第<div class="ydc-item-quick-kun"><input type="number" aria-invalid="false" class=""></div>页
+                                                    <button style="margin-left:5px;" class="ydc-previous-item-btn-medium">
+                                                        <span>跳转</span>
+                                                    </button>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+
+                                    <div class="ydc-pane">
+                                        <ol class="ydc-pane-list">
+                                            <li>
+                                                <a href="article.html?articleId=14">盛赞麻涌如"诗画田园"！<i>new</i></a>
+                                                <span>2020-04-07 18:02:35</span>
+                                            </li>
+                                            <li>
+                                                <a href="article.html?articleId=16">运动展活力，珠三角600多游泳爱好者畅游华阳湖</a>
+                                                <span>2020-03-27 10:05:25</span>
+                                            </li>
+                                            <li>
+                                                <a href="article.html?articleId=13">麻涌“水稻丰收节”欢迎你！</a>
+                                                <span>2020-03-05 17:30:03</span>
+                                            </li>
+                                        </ol>
+                                        <div class="ydc-pagination">
+                                            <ol>
+                                                <li class="ydc-previous-item">
+                                                    <button class="ydc-previous-item-btn-medium ydc-disabled">
+                                                        <span>上一页</span>
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button class="ydc-previous-item-btn-medium cur">1</button>
+                                                </li>
+                                                <li class="ydc-previous-item">
+                                                    <button class="ydc-previous-item-btn-medium">
+                                                        <span>下一页</span>
+                                                    </button>
+                                                </li>
+                                                <li class="ydc-item-quick">
+                                                    第<div class="ydc-item-quick-kun"><input type="number" aria-invalid="false" class=""></div>页
+                                                    <button style="margin-left:5px;" class="ydc-previous-item-btn-medium">
+                                                        <span>跳转</span>
+                                                    </button>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- gongGao End -->
+                    </div>
+                </div>
+            </div>
+            <!-- 右侧结束 -->
+        </div>
+    </div>
+
+    <!-- 引入foot -->
+    <div class="ydc-footer" th:include="~{includePerson :: foot}"></div>
+
+</section>
+
+</body>
+</html>

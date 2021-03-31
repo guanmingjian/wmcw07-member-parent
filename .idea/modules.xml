@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../wmcw05-common-util/wmcw05-common-util.iml" filepath="$PROJECT_DIR$/../wmcw05-common-util/wmcw05-common-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wmcw07-member-parent.iml" filepath="$PROJECT_DIR$/wmcw07-member-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wmcw08-member-eureka/wmcw08-member-eureka.iml" filepath="$PROJECT_DIR$/wmcw08-member-eureka/wmcw08-member-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wmcw09-member-zuul/wmcw09-member-zuul.iml" filepath="$PROJECT_DIR$/wmcw09-member-zuul/wmcw09-member-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wmcw10-member-mysql-provider/wmcw10-member-mysql-provider.iml" filepath="$PROJECT_DIR$/wmcw10-member-mysql-provider/wmcw10-member-mysql-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wmcw11-member-redis-provider/wmcw11-member-redis-provider.iml" filepath="$PROJECT_DIR$/wmcw11-member-redis-provider/wmcw11-member-redis-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wmcw12-member-authentication-consumer/wmcw12-member-authentication-consumer.iml" filepath="$PROJECT_DIR$/wmcw12-member-authentication-consumer/wmcw12-member-authentication-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wmcw13-member-article-consumer/wmcw13-member-article-consumer.iml" filepath="$PROJECT_DIR$/wmcw13-member-article-consumer/wmcw13-member-article-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wmcw14-member-hotel-consumer/wmcw14-member-hotel-consumer.iml" filepath="$PROJECT_DIR$/wmcw14-member-hotel-consumer/wmcw14-member-hotel-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wmcw15-member-cate-consumer/wmcw15-member-cate-consumer.iml" filepath="$PROJECT_DIR$/wmcw15-member-cate-consumer/wmcw15-member-cate-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wmcw16-member-pay-consumer/wmcw16-member-pay-consumer.iml" filepath="$PROJECT_DIR$/wmcw16-member-pay-consumer/wmcw16-member-pay-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wmcw17-member-api/wmcw17-member-api.iml" filepath="$PROJECT_DIR$/wmcw17-member-api/wmcw17-member-api.iml" />
+    </modules>
+  </component>
+</project>

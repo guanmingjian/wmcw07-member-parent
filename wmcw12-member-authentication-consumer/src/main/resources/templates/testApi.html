@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base th:href="@{/}"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+
+    // 酒店api
+   /* $(function () {
+
+        var ajaxResult = $.ajax({
+            "url": "portal/get/hotel.json",
+            "type":"post",
+            "data": {
+                "pageNum": 1,
+                "pageSize": 10,
+                "keyword": ''
+            },
+            "async":false,
+            "dataType":"json"
+        });
+
+        console.log(ajaxResult);
+
+        var pageInfo = ajaxResult.responseJSON.data;
+        console.log(pageInfo);
+        console.log(pageInfo.list[1].id);
+
+    });*/
+
+    //地图api
+  /*  $(function () {
+
+        $.ajax({
+            "url": "portal/get/map.json",
+            "type":"post",
+            "data": {
+                "type": 1
+            },
+            "async":false,
+            "dataType":"json",
+            "success":function (response) {
+                console.log(response);
+                alert(response.data[0].location);
+            }
+        });
+
+    });*/
+
+    $.ajax({
+        async: false,
+        type: "POST",
+        url: "article/get/comment.json",
+        data: {
+            articleId: 1
+        },
+        dataType: "text",
+        success: function (response) {
+
+            console.log(response)
+            console.log(response.data.userName)
+            console.log(response.data[0].userName)
+            console.log(response.data.list[0].userName)
+        }
+    })
+
+    // 获取分页的文章api （article/get/{type}/page.json）
+    // 回传数据库的时候是三个参数，但是路径也有一个参数，type那里换成1就是美食，换成2就是酒店，3是...
+    /* $(function () {
+
+         var ajaxResult = $.ajax({
+             "url": "article/get/1/page.json",
+             "type":"post",
+             "data": {
+                 "pageNum": 1,
+                 "pageSize": 4,
+                 "keyword": ''
+             },
+             "async":false,
+             "dataType":"json"
+         });
+
+         console.log(ajaxResult);
+
+         var pageInfo = ajaxResult.responseJSON.data;
+         console.log(pageInfo);
+         console.log(pageInfo.list[1].id);
+         console.log(pageInfo.list[1].title);
+
+     });*/
+
+     //获取智能推荐api
+    //返回的是一个List<ArticleModuleVO>,无需传参
+    //具体属性去看实体类ArticleModuleVO
+    //只返回4个对象
+    //他还有一个属性，就是label，为 你最喜欢 和你最常看 设计标签放好
+/*    $(function () {
+
+        $.ajax({
+            "url": "article/get/smart/recommendation.json",
+            "type":"post",
+            "async":false,
+            "dataType":"json",
+            "success":function (response) {
+                console.log(response);
+                console.log(response.data[0].id);
+                console.log(response.data[0].title);
+                console.log(response.data[0].authorName);
+                console.log(response.data[0].label);
+            }
+        });
+
+    });*/
+
+    //获取文章排行榜数据
+    //返回的是一个List<ArticleModuleVO>,无需传参
+    //具体属性去看实体类ArticleModuleVO
+    //只返回4个对象
+    //他还有一个属性，就是firepower，为 热力值 刚刚图标已经给你
+  /*  $(function () {
+
+        $.ajax({
+            "url": "article/get/ranking/list.json",
+            "type":"post",
+            "async":false,
+            "dataType":"json",
+            "success":function (response) {
+                console.log(response);
+                console.log(response.data[0].id);
+                console.log(response.data[0].title);
+                console.log(response.data[0].authorName);
+                console.log(response.data[0].firepower);
+
+            }
+        });
+
+    });*/
+
+    //获取作者其他文章数据
+    //返回的是一个List<ArticleModuleVO>,无需传参
+    //具体属性去看实体类ArticleModuleVO
+    //只返回4个对象
+    //要传两个参数 作者的名字 authorName 文章的ID：articleId
+    // 先用authorName=”西柚仔“ articleId=2代替
+   /* $(function () {
+
+        $.ajax({
+            "url": "article/get/other/author.json",
+            "type":"post",
+            "async":false,
+            "dataType":"json",
+            "data":{
+                "authorName": "西柚仔",
+                "articleId": 1
+            },
+            "success":function (response) {
+              console.log(response);
+              console.log(response.data[0].id);
+              console.log(response.data[0].title);
+              console.log(response.data[0].authorName);
+
+            }
+        });
+
+    });*/
+
+
+    //图片api
+    //传一个参数type
+    // 返回是一个集合list<Photo>
+    //  $(function () {
+    //
+    //     $.ajax({
+    //         "url": "portal/get/photo.json",
+    //         "type":"post",
+    //         "async":false,
+    //         "dataType":"json",
+    //         "data":{
+    //             "type": 1,
+    //         },
+    //         "success":function (response) {
+    //             console.log(response);
+    //             console.log(response.data[0].id);
+    //             console.log(response.data[0].title);
+    //             console.log(response.data[0].briefIntro);
+    //             console.log(response.data[0].imgPath);
+    //
+    //         }
+    //     });
+    //
+    // });
+
+
+</script>
+<body>
+    <h1>伟大的测试Api</h1>
+    <h2>请看浏览器控制台</h2>
+    <div th:if="${not #strings.isEmpty(session.user)}">
+        <p th:text="${session.user.name}">当前用户</p>
+        <p th:text="${session.user.label}">用户标签</p>
+    </div>
+
+</body>
+</html>

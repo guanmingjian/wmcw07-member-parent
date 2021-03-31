@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head th:fragment="head">
+        <base th:href="@{/}"/>
+        <meta charset="UTF-8">
+        <title>个人中心-智联麻涌</title>
+        <meta charset="UTF-8">
+        <meta name='TTUNION_verify' content='b846c3c2b85efabc496d2a2b8399cd62'>
+        <meta name="sogou_site_verification" content="gI1bINaJcL"/>
+        <meta name="360-site-verification" content="37ae9186443cc6e270d8a52943cd3c5a"/>
+        <meta name="baidu_union_verify" content="99203948fbfbb64534dbe0f030cbe817">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="apple-touch-fullscreen" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE;chrome=1">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="keywords" >
+        <meta name="description">
+        <meta name="author" content="AUI, a-ui.com">
+        <meta name="baidu-site-verification" content="ZVPGgtpUfW"/>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="iTunesArtwork@2x.png" sizes="114x114" rel="apple-touch-icon-precomposed">
+
+        <link type="text/css" rel="stylesheet" href="css/person/core.css">
+        <link type="text/css" rel="stylesheet" href="css/person/icon.css">
+        <link type="text/css" rel="stylesheet" href="css/person/home.css">
+
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript">
+            var slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slideIndex++;
+                if (slideIndex> slides.length) {slideIndex = 1}
+                slides[slideIndex-1].style.display = "block";
+                setTimeout(showSlides, 3000); // 滚动时间
+            }
+        </script>
+
+        <script type="text/javascript">
+            $(function(){
+                $('.ydc-tabPanel ul li').click(function(){
+                    $(this).addClass('hit').siblings().removeClass('hit');
+                    $('.ydc-panes>div:eq('+$(this).index()+')').show().siblings().hide();
+                })
+            })
+        </script>
+    </head>
+
+
+
+    <div class="ydc-entered" th:fragment="header">
+        <div class="ydc-header-content ydc-flex">
+            <div class="ydc-column">
+                <a href="index.html" class="ydc-column-ydc-logo">
+                    <img src="images/person/icon/1logo.png">
+                </a>
+            </div>
+            <div class="ydc-column">
+                <div class="ydc-column-user">
+                    <div class="ydc-user-photo">
+                        <a href="javascript:;">
+                            <!-- 头像链接 -->
+                            <img th:src="${session.user.headImage}" src="images/person/icon/photo.png" title="" about="" alt="">
+                        </a>
+                    </div>
+                    <div class="ydc-user-info">
+                        <div class="ydc-user-info-name">
+                            <a href="user/info.jsp" th:text="${session.user.name}">用户名</a>
+                        </div>
+                        <div class="ydc-user-info-func ydc-flex">
+                            <span class="ydc-tag">尊贵用户</span>
+                            <a href="auth/do/user/logout">退出登录</a>
+                            <a href="/">返回首页</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:fragment="left">
+
+        <div class="ydc-menu">
+            <ul>
+
+                <li class="ydc-menu-item">
+                    <a href="personIndex.html"  class="active"><i class="ydc-icon ydc-icon-home fl"></i>我的首页</a>
+                </li>
+
+                <li class="ydc-menu-item">
+                    <span class="ydc-menu-sub-title">
+                        <i class="ydc-icon ydc-icon-file fl"></i>管理
+                    </span>
+                    <ul>
+
+                        <li>
+                            <a href="personAsset.html">个人收藏</a>
+                        </li>
+                        <li>
+                            <a href="personRecord.html">浏览记录</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="ydc-menu-item">
+
+                    <span class="ydc-menu-sub-title">
+                        <i class="ydc-icon ydc-icon-set fl"></i>设置
+                    </span>
+                    <ul>
+                        <li>
+                            <a href="personInfo.html">账号信息</a>
+                        </li>
+                        <li>
+                            <a href="personPassword.html">修改密码</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <div th:fragment="foot">
+        <p>©中大新华奥利奥团队 仅供学习参考</p>
+    </div>
+
+</html>
